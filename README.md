@@ -1,15 +1,14 @@
-# node-java-caller
+# Java-caller
 
-[![Version](https://img.shields.io/npm/v/node-java-caller.svg)](https://npmjs.org/package/node-java-caller)
-[![Downloads/week](https://img.shields.io/npm/dw/node-java-caller.svg)](https://npmjs.org/package/node-java-caller)
-[![Downloads/total](https://img.shields.io/npm/dt/node-java-caller.svg)](https://npmjs.org/package/node-java-caller)
+[![Version](https://img.shields.io/npm/v/java-caller.svg)](https://npmjs.org/package/node-java-caller)
+[![Downloads/week](https://img.shields.io/npm/dw/java-caller.svg)](https://npmjs.org/package/node-java-caller)
+[![Downloads/total](https://img.shields.io/npm/dt/java-caller.svg)](https://npmjs.org/package/node-java-caller)
 [![CircleCI](https://circleci.com/gh/nvuillam/node-java-caller/tree/master.svg?style=shield)](https://circleci.com/gh/nvuillam/node-java-caller/tree/master)
 [![codecov](https://codecov.io/gh/nvuillam/node-java-caller/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/node-java-caller)
 [![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/node-java-caller.svg)](https://gitHub.com/nvuillam/node-java-caller/graphs/contributors/)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/node-java-caller?label=Star&maxAge=2592000)](https://GitHub.com/nvuillam/node-java-caller/stargazers/)
 [![License](https://img.shields.io/npm/l/node-java-caller.svg)](https://github.com/nvuillam/node-java-caller/blob/master/package.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
 
 - **WARNING: Initial development in progress**
 
