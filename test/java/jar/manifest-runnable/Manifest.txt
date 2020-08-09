@@ -1,0 +1,3 @@
+Manifest-version: 1.0
+Created-By: Nicolas Vuillamy
+Main-Class: com.nvuillam.javacaller.JavaCallerTester

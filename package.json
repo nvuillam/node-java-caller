@@ -1,0 +1,71 @@
+{
+  "name": "java-caller",
+  "version": "0.1.0",
+  "description": "Library to easily call java from node sources. Automatically installs java if not present",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "lint:fix": "eslint **/*.js --fix && prettier --write \"./lib/**/*.{js,jsx,json}\" --tab-width 4 --print-width 150",
+    "java:compile": "javac -d test/java/dist -source 8 -target 1.8 test/java/src/com/nvuillam/javacaller/JavaCallerTester.java",
+    "java:jar": "cd test/java/dist && jar -cvfm ./../jar/JavaCallerTester.jar ./../jar/manifest/Manifest.txt com/nvuillam/javacaller/*.class && jar -cvfm ./../jar/JavaCallerTesterRunnable.jar ./../jar/manifest-runnable/Manifest.txt com/nvuillam/javacaller/*.class",
+    "test": "mocha \"test/**/*.test.js\"",
+    "test:coverage": "nyc npm run test",
+    "test:debug": "env DEBUG=java-caller mocha --reporter spec \"test/**/*.test.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nvuillam/node-java-caller.git"
+  },
+  "keywords": [
+    "java",
+    "caller",
+    "classpath",
+    "jar",
+    "node",
+    "npm",
+    "javascript",
+    "class"
+  ],
+  "author": "Nicolas Vuillamy",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/nvuillam/node-java-caller/issues"
+  },
+  "homepage": "https://github.com/nvuillam/node-java-caller#readme",
+  "dependencies": {
+    "debug": "^4.1.1",
+    "fs-extra": "^9.0.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.6.0",
+    "mocha": "^8.1.1",
+    "nyc": "^15.1.0"
+  },
+  "engines": {
+    "node": ">=12.0.0"
+  },
+  "mocha": {
+    "require": [
+      "test/helpers/init.js"
+    ],
+    "watch-extensions": [
+      "js"
+    ],
+    "recursive": true,
+    "reporter": "spec",
+    "timeout": "300000"
+  },
+  "nyc": {
+    "include": [
+      "lib/**"
+    ],
+    "extension": [
+      ".js"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
+  }
+}
