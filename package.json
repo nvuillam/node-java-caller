@@ -2,7 +2,10 @@
   "name": "java-caller",
   "version": "0.4.0",
   "description": "Library to easily call java from node sources. Automatically installs java if not present",
-  "main": "index.js",
+  "main": "./lib/index.js",
+  "files": [
+    "lib/"
+  ],
   "scripts": {
     "lint:fix": "eslint **/*.js --fix && prettier --write \"./lib/**/*.{js,jsx,json}\" --tab-width 4 --print-width 150",
     "java:compile": "javac -d test/java/dist -source 8 -target 1.8 test/java/src/com/nvuillam/javacaller/JavaCallerTester.java",
