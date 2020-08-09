@@ -2,7 +2,6 @@
   "name": "java-caller",
   "version": "0.1.0",
   "description": "Library to easily call java from node sources. Automatically installs java if not present",
-  "type": "module",
   "main": "index.js",
   "scripts": {
     "lint:fix": "eslint **/*.js --fix && prettier --write \"./lib/**/*.{js,jsx,json}\" --tab-width 4 --print-width 150",
