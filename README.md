@@ -1,8 +1,6 @@
 <!-- markdownlint-disable MD033 -->
 # Java Caller for Node.js
 
-- **WARNING: Initial development in progress**
-
 [![Version](https://img.shields.io/npm/v/java-caller.svg)](https://npmjs.org/package/node-java-caller)
 [![Downloads/week](https://img.shields.io/npm/dw/java-caller.svg)](https://npmjs.org/package/node-java-caller)
 [![Downloads/total](https://img.shields.io/npm/dt/java-caller.svg)](https://npmjs.org/package/node-java-caller)
@@ -39,7 +37,7 @@ const {status, stdout, stderr} = java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_OPTIONS
 | jar                | Path to executable jar file                                                                                                                                           |                      | `"myfolder/myjar.jar"`                   |
 | classPath          | If jar parameter is not set, classpath to use<br/>Use `:` as separator (it will be converted if runned on Windows)                                                    | `.` (current folder) | `"java/myJar.jar:java/myOtherJar.jar"`   |
 | mainClass          | If classPath set, main class to call                                                                                                                                  |                      | `"com.example.MyClass"`                  |
-| rootPath           | If classPath elements are not relative to the current folder, you can define a root path                                                                              | `.` (current folder) | `"/home/my/folder/containing/jars"`      |
+| rootPath           | If classPath elements are not relative to the current folder, you can define a root path. <br/> You may use `__dirname` if you classes / jars are in your module folder    | `.` (current folder) | `"/home/my/folder/containing/jars"`      |
 | javaExecutable     | You can force to use a defined java executable, instead of letting java-caller find/install one                                                                       |                      | `"/home/some-java-version/bin/java.exe"` |
 | minimumJavaVersion | Minimum java version to be used to call java command.<br/> If the java version found on machine is lower, java-caller will try to install and use the appropriate one | `1.8`                | `11`                                     |
 | maximumJavaVersion | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one |                      | `10`                                     |
@@ -101,6 +99,17 @@ const java = new JavaCaller({
     jar: 'test/java/jar/JavaCallerTesterRunnable.jar',
 });
 const { status, stdout, stderr } = await java.run();
+```
+
+## TROUBLESHOOTING
+
+Set environment variable `DEBUG=java-caller` before calling your code using java-caller module, and you will see the java commands executed.
+
+Example debug log:
+
+```shell
+java-caller Found Java version 1.80131 +1s
+java-caller Java command: java -Xms256m -Xmx2048m -cp C:\Work\gitPerso\node-java-caller\test\java\dist com.nvuillam.javacaller.JavaCallerTester -customarg nico +1ms
 ```
 
 ## CONTRIBUTE
