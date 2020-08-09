@@ -1,4 +1,7 @@
-# Java-caller
+<!-- markdownlint-disable MD033 -->
+# Java Caller for Node.js
+
+- **WARNING: Initial development in progress**
 
 [![Version](https://img.shields.io/npm/v/java-caller.svg)](https://npmjs.org/package/node-java-caller)
 [![Downloads/week](https://img.shields.io/npm/dw/java-caller.svg)](https://npmjs.org/package/node-java-caller)
@@ -10,56 +13,98 @@
 [![License](https://img.shields.io/npm/l/node-java-caller.svg)](https://github.com/nvuillam/node-java-caller/blob/master/package.json)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-- **WARNING: Initial development in progress**
+Cross-platform JS module to easily call java commands from Node.js sources.
 
-Cross-platform JS module to easily call java from Node.js sources.
-Automatically installs java (currently 1.8) if not present on the system
+- Automatically installs java (currently 1.8) if not present on the system
+- Uses node [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) method to perform the call
 
 ## Installation
 
 ```shell
-npm install node-java-caller --save
+npm install java-caller --save
 ```
 
 ## Usage
 
-### Examples
+```javascript
+const JavaCaller = require('java-caller');
+const java = new JavaCaller(JAVA_CALLER_OPTIONS);
+const {status, stdout, stderr} = java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_OPTIONS);
+```
+
+### JAVA_CALLER_OPTIONS
+
+| Parameter          | Description                                                                                                                                                           | Default value        | Example                                  |
+|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|------------------------------------------|
+| jar                | Path to executable jar file                                                                                                                                           |                      | `"myfolder/myjar.jar"`                   |
+| classPath          | If jar parameter is not set, classpath to use<br/>Use `:` as separator (it will be converted if runned on Windows)                                                    | `.` (current folder) | `"java/myJar.jar:java/myOtherJar.jar"`   |
+| mainClass          | If classPath set, main class to call                                                                                                                                  |                      | `"com.example.MyClass"`                  |
+| rootPath           | If classPath elements are not relative to the current folder, you can define a root path                                                                              | `.` (current folder) | `"/home/my/folder/containing/jars"`      |
+| javaExecutable     | You can force to use a defined java executable, instead of letting java-caller find/install one                                                                       |                      | `"/home/some-java-version/bin/java.exe"` |
+| minimumJavaVersion | Minimum java version to be used to call java command.<br/> If the java version found on machine is lower, java-caller will try to install and use the appropriate one | `1.8`                | `11`                                     |
+| maximumJavaVersion | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one |                      | `10`                                     |
+| additionalJavaArgs | Additional parameters for JVM                                                                                                                                         |                      | `["-Xms256m","-Xmx2048m"]`                |
+
+### JAVA_ARGUMENTS
+
+The list of arguments can contain both arguments types together:
+
+- Java arguments (**-X*** , **-D***). ex: `"-Xms256m"`, `"-Xmx2048m"`
+- Main class arguments (sent to `public static void main method`). ex: `"--someflag"` , `"--someflagwithvalue myVal"` , `"-c"`
+
+Example: `["-Xms256m", "--someflagwithvalue myVal", "-c"]`
+
+### JAVA_CALLER_RUN_OPTIONS
+
+| Parameter      | Description                                                                                                                                                                      | Default         | Example                 |
+|----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------|
+| [detached](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)   | If set to true, node will node wait for the java command to be completed.<br/>In that case, stdout and stderr may be empty, except if an error is triggered at command execution | `false`         | `true`                  |
+| waitForErrorMs | If detached is true, number of milliseconds to wait to detect an error before exiting JavaCaller run                                                                             | `500`           | `2000`                  |
+| [cwd](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)        | You can override cwd of spawn called by JavaCaller runner                                                                                                                        | `process.cwd()` | `some/other/cwd/folder` |
+
+## Examples
 
 Call a class located in classpath
 
 ```javascript
-        const java = new JavaCaller({
-            classPath: 'test/java/dist',
-            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
-        });
-        const { status, stdout, stderr } = await java.run();
+const java = new JavaCaller({
+    classPath: 'test/java/dist',
+    mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+});
+const { status, stdout, stderr } = await java.run();
 ```
 
 Call a class located in classpath with java and custom arguments
 
 ```javascript
-        const java = new JavaCaller({
-            classPath: 'test/java/dist',
-            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
-        });
-        const { status, stdout, stderr } = await java.run(['-Xms256m', '-Xmx2048m', '-customarg nico']);
+const java = new JavaCaller({
+    classPath: 'test/java/dist',
+    mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+});
+const { status, stdout, stderr } = await java.run(['-Xms256m', '-Xmx2048m', '--customarg nico']);
 ```
 
 Call a class in jar located in classpath
 
 ```javascript
-        const java = new JavaCaller({
-            classPath: 'test/java/jar/JavaCallerTester.jar',
-            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
-        });
-        const { status, stdout, stderr } = await java.run('');
+const java = new JavaCaller({
+    classPath: 'test/java/jar/JavaCallerTester.jar',
+    mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+});
+const { status, stdout, stderr } = await java.run();
 ```
 
 Call a runnable jar
 
 ```javascript
-        const java = new JavaCaller({
-            jar: 'test/java/jar/JavaCallerTesterRunnable.jar',
-        });
-        const { status, stdout, stderr } = await java.run('');
+const java = new JavaCaller({
+    jar: 'test/java/jar/JavaCallerTesterRunnable.jar',
+});
+const { status, stdout, stderr } = await java.run();
 ```
+
+## CONTRIBUTE
+
+Contributions are very welcome !
+
+Please follow [Contribution instructions](https://github.com/nvuillam/node-java-caller/blob/master/CONTRIBUTING.md)
