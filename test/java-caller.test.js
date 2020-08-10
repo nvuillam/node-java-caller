@@ -26,8 +26,8 @@ describe("Call with classes", () => {
             classPath: 'test/java/dist',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
         });
-        const { status, stdout, stderr } = await java.run('', { detached: true });
-
+        const { status, stdout, stderr, childJavaProcess } = await java.run(['--sleep'], { detached: true });
+        childJavaProcess.kill('SIGINT');
         checkStatus(0, status, stdout, stderr);
     });
 
@@ -49,7 +49,7 @@ describe("Call with classes", () => {
             classPath: 'test/java/jar/JavaCallerTester.jar',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
         });
-        const { status, stdout, stderr } = await java.run('');
+        const { status, stdout, stderr } = await java.run();
 
         checkStatus(0, status, stdout, stderr);
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
@@ -59,7 +59,7 @@ describe("Call with classes", () => {
         const java = new JavaCaller({
             jar: 'test/java/jar/JavaCallerTesterRunnable.jar',
         });
-        const { status, stdout, stderr } = await java.run('');
+        const { status, stdout, stderr } = await java.run();
 
         checkStatus(0, status, stdout, stderr);
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);

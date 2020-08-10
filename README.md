@@ -11,7 +11,7 @@
 [![License](https://img.shields.io/npm/l/java-caller.svg)](https://github.com/nvuillam/node-java-caller/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Cross-platform JS module to easily call java commands from Node.js sources.
+Lightweight cross-platform javascript module to easily call java commands from Node.js sources.
 
 - Automatically installs java (currently 1.8) if not present on the system
 - Uses node [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) method to perform the call
@@ -56,7 +56,7 @@ Example: `["-Xms256m", "--someflagwithvalue myVal", "-c"]`
 
 | Parameter      | Description                                                                                                                                                                      | Default         | Example                 |
 |----------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|-------------------------|
-| [detached](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)   | If set to true, node will node wait for the java command to be completed.<br/>In that case, stdout and stderr may be empty, except if an error is triggered at command execution | `false`         | `true`                  |
+| [detached](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)   | If set to true, node will node wait for the java command to be completed.<br/>In that case, `childJavaProcess` property will be returned, but `stdout` and `stderr` may be empty, except if an error is triggered at command execution | `false`         | `true`                  |
 | waitForErrorMs | If detached is true, number of milliseconds to wait to detect an error before exiting JavaCaller run                                                                             | `500`           | `2000`                  |
 | [cwd](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)        | You can override cwd of spawn called by JavaCaller runner                                                                                                                        | `process.cwd()` | `some/other/cwd/folder` |
 
@@ -101,6 +101,19 @@ const java = new JavaCaller({
 const { status, stdout, stderr } = await java.run();
 ```
 
+Call a detached java process
+
+```javascript
+const java = new JavaCaller({
+    classPath: 'test/java/dist',
+    mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+});
+const { status, stdout, stderr, childJavaProcess } = await java.run(['--sleep'], { detached: true });
+
+// Kill later the java process if necessary
+childJavaProcess.kill('SIGINT');
+```
+
 You can see **more examples in** [**test methods**](https://github.com/nvuillam/node-java-caller/blob/master/test/java-caller.test.js)
 
 ## TROUBLESHOOTING
@@ -119,3 +132,17 @@ java-caller Java command: java -Xms256m -Xmx2048m -cp C:\Work\gitPerso\node-java
 Contributions are very welcome !
 
 Please follow [Contribution instructions](https://github.com/nvuillam/node-java-caller/blob/master/CONTRIBUTING.md)
+
+## RELEASE NOTES
+
+## [1.1.0] 2020-08-10
+
+- Return `javaChildProcess` when `detached` is true, so it can be used to be killed later
+
+## [1.0.0] 2020-08-10
+
+- Initial version
+
+____
+
+See complete [CHANGELOG](https://github.com/nvuillam/node-java-caller/blob/master/CHANGELOG.md)
