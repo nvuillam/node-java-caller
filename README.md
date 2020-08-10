@@ -101,6 +101,8 @@ const java = new JavaCaller({
 const { status, stdout, stderr } = await java.run();
 ```
 
+You can see **more examples in** [**test methods**](https://github.com/nvuillam/node-java-caller/blob/master/test/java-caller.test.js)
+
 ## TROUBLESHOOTING
 
 Set environment variable `DEBUG=java-caller` before calling your code using java-caller module, and you will see the java commands executed.
