@@ -7,3 +7,6 @@ const debug = typeof v8debug === "object" || /--debug|--inspect|--inspect-brk/.t
 if (debug) {
     require("debug").enable("java-caller");
 }
+
+// Reinitialize cache
+globalThis.JAVA_CALLER_VERSIONS_CACHE = null;
