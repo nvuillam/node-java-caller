@@ -11,9 +11,10 @@
 [![License](https://img.shields.io/npm/l/java-caller.svg)](https://github.com/nvuillam/node-java-caller/blob/master/LICENSE)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
-Lightweight cross-platform javascript module to easily call java commands from Node.js sources.
+Lightweight cross-platform javascript module to **easily call java commands from Node.js sources**.
 
-- Automatically installs java (currently 1.8) if not present on the system
+- **Automatically installs required Java version** if not present on the system
+- Compliant with **JDK & JRE** from **8 to 14**
 - Uses node [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) method to perform the call
 
 ## Installation
@@ -38,10 +39,11 @@ const {status, stdout, stderr} = java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_OPTIONS
 | classPath          | If jar parameter is not set, classpath to use<br/>Use `:` as separator (it will be converted if runned on Windows)                                                    | `.` (current folder) | `"java/myJar.jar:java/myOtherJar.jar"`   |
 | mainClass          | If classPath set, main class to call                                                                                                                                  |                      | `"com.example.MyClass"`                  |
 | rootPath           | If classPath elements are not relative to the current folder, you can define a root path. <br/> You may use `__dirname` if you classes / jars are in your module folder    | `.` (current folder) | `"/home/my/folder/containing/jars"`      |
+| minimumJavaVersion | Minimum java version to be used to call java command.<br/> If the java version found on machine is lower, java-caller will try to install and use the appropriate one | `8`                | `11`                                     |
+| maximumJavaVersion | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one <br/> Can be equal to minimumJavaVersion |                      | `10`                                     |
+| javaType           | jre or jdk (if not defined and installation is required, jre will be installed)                                                                       |                      | `"jre"` |
+| additionalJavaArgs | Additional parameters for JVM that will be added in every JavaCaller instance runs                                                                                                                                        |                      | `["-Xms256m","-Xmx2048m"]`                |
 | javaExecutable     | You can force to use a defined java executable, instead of letting java-caller find/install one                                                                       |                      | `"/home/some-java-version/bin/java.exe"` |
-| minimumJavaVersion | Minimum java version to be used to call java command.<br/> If the java version found on machine is lower, java-caller will try to install and use the appropriate one | `1.8`                | `11`                                     |
-| maximumJavaVersion | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one |                      | `10`                                     |
-| additionalJavaArgs | Additional parameters for JVM                                                                                                                                         |                      | `["-Xms256m","-Xmx2048m"]`                |
 
 ### JAVA_ARGUMENTS
 
@@ -135,11 +137,17 @@ Please follow [Contribution instructions](https://github.com/nvuillam/node-java-
 
 ## RELEASE NOTES
 
-## [1.1.0] 2020-08-10
+### [2.0.0] 2020-08-11
+
+- Big refactoring to simplify and enhance performances of code checking/installing java version
+- Replace use of deprecated package [node-jre](https://github.com/schreiben/node-jre) by [njre](https://github.com/raftario/njre)
+- Compliance with JDK & JRE from 8 to 14 ([AdoptOpenJdk](https://adoptopenjdk.net/) releases)
+
+### [1.1.0] 2020-08-10
 
 - Return `javaChildProcess` when `detached` is true, so it can be used to be killed later
 
-## [1.0.0] 2020-08-10
+### [1.0.0] 2020-08-10
 
 - Initial version
 

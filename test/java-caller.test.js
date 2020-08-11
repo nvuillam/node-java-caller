@@ -1,10 +1,12 @@
 #! /usr/bin/env node
 "use strict";
 const { JavaCaller } = require('../lib/index');
-const assert = require("assert");
 
 const {
-    beforeEachTestCase
+    beforeEachTestCase,
+    checkStatus,
+    checkStdOutIncludes,
+    checkStdErrIncludes
 } = require("./helpers/common");
 
 describe("Call with classes", () => {
@@ -90,14 +92,3 @@ describe("Call with classes", () => {
 
 });
 
-function checkStatus(statusCode, status, stdout, stderr) {
-    assert(status === statusCode, `Status is ${statusCode} (${status} returned)\nstdout:\n${stdout}\nstderr:\n${stderr}`);
-}
-
-function checkStdOutIncludes(textToCheck, stdout, stderr) {
-    assert(stdout && stdout.includes(textToCheck), `stdout contains ${textToCheck}\nstdout:\n${stdout}\nstderr:\n${stderr}`);
-}
-
-function checkStdErrIncludes(textToCheck, stdout, stderr) {
-    assert(stderr && stderr.includes(textToCheck), `stderr contains ${textToCheck}\nstdout:\n${stdout}\nstderr:\n${stderr}`);
-}        
