@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.1.0] 2020-08-12
+
+- Allow to use java-caller to build your own CLI embedding java sources
+- Example projects using module and CLI
+
 ## [2.0.0] 2020-08-11
 
 - Big refactoring to simplify and enhance performances of code checking/installing java version

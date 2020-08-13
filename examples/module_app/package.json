@@ -1,0 +1,31 @@
+{
+  "name": "java-caller-example-module",
+  "version": "1.0.0",
+  "description": "Example of project using java-caller as a module",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "java-caller-example-module": "lib/index.js"
+  },
+  "scripts": {
+    "install-local-cli": "npm install && npm link --force",
+    "run:source": "node lib/index.js",
+    "run:source:verbose": "env DEBUG=java-caller node lib/index.js",
+    "run:cli": "java-caller-example-module",
+    "run:cli:verbose": "env DEBUG=java-caller java-caller-example-module",
+    "test": "echo \"I strongly encourage you to implement test cases and code coverage, with mocha and nyc for example :)\""
+  },
+  "keywords": [
+    "java-caller",
+    "example",
+    "module",
+    "manual"
+  ],
+  "author": "Nicolas Vuillamy",
+  "license": "MIT",
+  "dependencies": {
+    "java-caller": "^2.0.0"
+  }
+}

@@ -8,6 +8,7 @@ const {
     checkStdOutIncludes,
     checkStdErrIncludes
 } = require("./helpers/common");
+const { JavaCallerCli } = require('../lib/cli');
 
 describe("Call with classes", () => {
     beforeEach(beforeEachTestCase);
@@ -88,6 +89,11 @@ describe("Call with classes", () => {
 
         checkStatus(666, status, stdout, stderr);
         checkStdErrIncludes(`spawn error`, stdout, stderr);
+    });
+
+    it("should use JavaCallerCli", async () => {
+        const javaCli = new JavaCallerCli("examples/cli_app/lib");
+        await javaCli.process();
     });
 
 });
