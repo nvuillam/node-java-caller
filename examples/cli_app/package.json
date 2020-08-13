@@ -25,6 +25,6 @@
   "author": "Nicolas Vuillamy",
   "license": "MIT",
   "dependencies": {
-    "java-caller": "^2.1.0-beta.2"
+    "java-caller": "^2.1.0"
   }
 }

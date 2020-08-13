@@ -20,7 +20,7 @@ Lightweight cross-platform javascript module to **easily call java commands from
 There are two ways to use java-caller:
 
 - **module**: Manually call JavaCaller in your custom JS/TS code ([example project](https://github.com/nvuillam/node-java-caller/tree/master/examples/module_app))
-- **CLI**: Just define a java-caller-config.json and you can deliver your java executables as your own NPM packages ! ([example project](https://github.com/nvuillam/node-java-caller/tree/master/examples/cli_app))
+- **CLI**: Just define a java-caller-config.json and you can deliver your java executables as your own NPM packages ! ([example project](https://github.com/nvuillam/node-java-caller/tree/master/examples/cli_app), which can be used as starter kit)
 
 ## Installation
 
