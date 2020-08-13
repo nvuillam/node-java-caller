@@ -17,6 +17,11 @@ Lightweight cross-platform javascript module to **easily call java commands from
 - Compliant with **JDK & JRE** from **8 to 14**
 - Uses node [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) method to perform the call
 
+There are two ways to use java-caller:
+
+- **module**: Manually call JavaCaller in your custom JS/TS code ([example project](https://github.com/nvuillam/node-java-caller/tree/master/examples/module_app))
+- **CLI**: Just define a java-caller-config.json and you can deliver your java executables as your own NPM packages ! ([example project](https://github.com/nvuillam/node-java-caller/tree/master/examples/cli_app))
+
 ## Installation
 
 ```shell
@@ -136,6 +141,11 @@ Contributions are very welcome !
 Please follow [Contribution instructions](https://github.com/nvuillam/node-java-caller/blob/master/CONTRIBUTING.md)
 
 ## RELEASE NOTES
+
+### [2.1.0] 2020-08-12
+
+- Allow to use java-caller to build your own CLI embedding java sources
+- Example projects using module and CLI
 
 ### [2.0.0] 2020-08-11
 

@@ -1,0 +1,30 @@
+{
+  "name": "java-caller-example-cli",
+  "version": "1.0.0",
+  "description": "Example of project using java-caller as a cli with java-caller-config.json config file",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "bin": {
+    "java-caller-example-cli": "lib/index.js"
+  },
+  "scripts": {
+    "install-local-cli": "npm install && npm link --force",
+    "run:source": "node lib/index.js -a list --of arguments",
+    "run:source:verbose": "env DEBUG=java-caller node lib/index.js -a list --of arguments",
+    "run:cli": "java-caller-example-cli -a list --of arguments",
+    "run:verbose": "env DEBUG=java-caller java-caller-example-cli -a list --of arguments"
+  },
+  "keywords": [
+    "java-caller",
+    "example",
+    "cli",
+    "manual"
+  ],
+  "author": "Nicolas Vuillamy",
+  "license": "MIT",
+  "dependencies": {
+    "java-caller": "^2.1.0-beta.2"
+  }
+}

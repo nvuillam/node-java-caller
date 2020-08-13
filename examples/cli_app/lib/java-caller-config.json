@@ -1,0 +1,5 @@
+{
+    "classPath": "java/JavaCallerTester.jar",
+    "mainClass": "com.nvuillam.javacaller.JavaCallerTester",
+    "minimumJavaVersion": 10
+}
