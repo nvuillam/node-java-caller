@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 "use strict";
 const { JavaCaller } = require('../lib/index');
+const os = require("os");
 const which = require("which");
 
 const {
@@ -110,7 +111,7 @@ describe("Call with classes", () => {
         });
         const { status, stdout, stderr } = await java.run();
 
-        checkStatus(1, status, stdout, stderr);
+        checkStatus(os.platform() === "win32" ? 1 : 127, status, stdout, stderr);
     });
 
     it("should use JavaCallerCli", async () => {
