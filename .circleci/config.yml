@@ -146,7 +146,7 @@ jobs:
 # As we use free version of CircleCI, uncomment jobs only if there are some detected issues, else debian-jdk-8/11-node-12 are enough
 workflows:
   version: 2
-  "npm-groovy-lint-build-test":
+  "java-caller-lint-build-test":
     jobs:
       - debian-jdk-8-node-12
       #         - debian-jdk-9-node-12

@@ -1,6 +1,8 @@
 #! /usr/bin/env node
 "use strict";
 const { JavaCaller } = require('../lib/index');
+const os = require("os");
+const which = require("which");
 
 const {
     beforeEachTestCase,
@@ -58,6 +60,28 @@ describe("Call with classes", () => {
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
     });
 
+    it("should call JavaCallerTester.class in JavaCallerTester.jar (override java)", async () => {
+        let javaPath;
+        try {
+            javaPath = which.sync("java");
+        } catch (e) {
+            console.log("Java not found: ignore test method");
+        }
+        if (javaPath) {
+            console.log(`Java found: ${javaPath}`);
+            const java = new JavaCaller({
+                classPath: 'test/java/jar/JavaCallerTester.jar',
+                mainClass: 'com.nvuillam.javacaller.JavaCallerTester',
+                javaExecutable: javaPath,
+                javaOptions: "-Xms512m,-Xmx2g"
+            });
+            const { status, stdout, stderr } = await java.run();
+
+            checkStatus(0, status, stdout, stderr);
+            checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+        }
+    });
+
     it("should call JavaCallerTester.class in JavaCallerTesterRunnable.jar", async () => {
         const java = new JavaCaller({
             jar: 'test/java/jar/JavaCallerTesterRunnable.jar',
@@ -87,8 +111,7 @@ describe("Call with classes", () => {
         });
         const { status, stdout, stderr } = await java.run();
 
-        checkStatus(666, status, stdout, stderr);
-        checkStdErrIncludes(`spawn error`, stdout, stderr);
+        checkStatus(os.platform() === "win32" ? 1 : 127, status, stdout, stderr);
     });
 
     it("should use JavaCallerCli", async () => {

@@ -29,7 +29,7 @@
     "class"
   ],
   "author": "Nicolas Vuillamy",
-  "license": "GPL-3.0-only",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nvuillam/node-java-caller/issues"
   },
@@ -43,7 +43,8 @@
     "babel-eslint": "^10.1.0",
     "eslint": "^7.6.0",
     "mocha": "^8.1.1",
-    "nyc": "^15.1.0"
+    "nyc": "^15.1.0",
+    "which": "^2.0.2"
   },
   "engines": {
     "node": ">=12.0.0"
