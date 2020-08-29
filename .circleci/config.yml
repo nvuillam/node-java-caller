@@ -128,7 +128,7 @@ jobs:
           command: npm ci
       - run:
           name: Testing
-          command: npm run test
+          command: npm run test:debug
 
   windows:
     executor:
