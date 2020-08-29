@@ -142,9 +142,10 @@ Please follow [Contribution instructions](https://github.com/nvuillam/node-java-
 
 ## RELEASE NOTES
 
-## [2.2.0] 2020-08-29
+### [2.2.0] 2020-08-29
 
 - Fix CLASSPATH on windows in case there are spaces in paths
+- Update License to MIT
 
 ### [2.1.0] 2020-08-12
 
