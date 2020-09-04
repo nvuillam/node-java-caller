@@ -21,7 +21,7 @@ jobs:
           command: npm ci
       - run:
           name: Testing
-          command: npm run test
+          command: npm run test:debug
 
   # JDK 9 Node 12
   debian-jdk-9-node-12:

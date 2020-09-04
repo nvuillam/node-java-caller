@@ -142,6 +142,10 @@ Please follow [Contribution instructions](https://github.com/nvuillam/node-java-
 
 ## RELEASE NOTES
 
+### [2.2.3] 2020-09-05
+
+- Fix Java 8 detection ([#101@npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint/issues/101))
+
 ### [2.2.0] 2020-08-29
 
 - Fix CLASSPATH on windows in case there are spaces in paths
