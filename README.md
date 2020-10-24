@@ -5,6 +5,7 @@
 [![Downloads/week](https://img.shields.io/npm/dw/java-caller.svg)](https://npmjs.org/package/java-caller)
 [![Downloads/total](https://img.shields.io/npm/dt/java-caller.svg)](https://npmjs.org/package/java-caller)
 [![CircleCI](https://circleci.com/gh/nvuillam/node-java-caller/tree/master.svg?style=shield)](https://circleci.com/gh/nvuillam/node-java-caller/tree/master)
+[![Mega-Linter](https://github.com/nvuillam/node-java-caller/workflows/Mega-Linter/badge.svg)](https://github.com/nvuillam/mega-linter#readme)
 [![codecov](https://codecov.io/gh/nvuillam/node-java-caller/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/node-java-caller)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/2f74d43c38764caab0c6f76a7a668df3)](https://www.codacy.com/manual/nvuillam/node-java-caller?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nvuillam/node-java-caller&amp;utm_campaign=Badge_Grade)
 [![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/node-java-caller.svg)](https://gitHub.com/nvuillam/node-java-caller/graphs/contributors/)
