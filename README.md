@@ -40,17 +40,19 @@ const {status, stdout, stderr} = java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_OPTIONS
 
 ### JAVA_CALLER_OPTIONS
 
-| Parameter          | Description                                                                                                                                                           | Default value        | Example                                  |
-|--------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------|------------------------------------------|
-| jar                | Path to executable jar file                                                                                                                                           |                      | `"myfolder/myjar.jar"`                   |
-| classPath          | If jar parameter is not set, classpath to use<br/>Use `:` as separator (it will be converted if runned on Windows)                                                    | `.` (current folder) | `"java/myJar.jar:java/myOtherJar.jar"`   |
-| mainClass          | If classPath set, main class to call                                                                                                                                  |                      | `"com.example.MyClass"`                  |
-| rootPath           | If classPath elements are not relative to the current folder, you can define a root path. <br/> You may use `__dirname` if you classes / jars are in your module folder    | `.` (current folder) | `"/home/my/folder/containing/jars"`      |
-| minimumJavaVersion | Minimum java version to be used to call java command.<br/> If the java version found on machine is lower, java-caller will try to install and use the appropriate one | `8`                | `11`                                     |
-| maximumJavaVersion | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one <br/> Can be equal to minimumJavaVersion |                      | `10`                                     |
-| javaType           | jre or jdk (if not defined and installation is required, jre will be installed)                                                                       |                      | `"jre"` |
-| additionalJavaArgs | Additional parameters for JVM that will be added in every JavaCaller instance runs                                                                                                                                        |                      | `["-Xms256m","-Xmx2048m"]`                |
-| javaExecutable     | You can force to use a defined java executable, instead of letting java-caller find/install one                                                                       |                      | `"/home/some-java-version/bin/java.exe"` |
+| Parameter             | Description                                                                                                                                                                                                    | Default value        | Example                                  |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------- | ---------------------------------------- |
+| jar                   | Path to executable jar file                                                                                                                                                                                    |                      | `"myfolder/myjar.jar"`                   |
+| classPath             | If jar parameter is not set, classpath to use<br/>Use `:` as separator (it will be converted if runned on Windows), or use a string array.                                                                     | `.` (current folder) | `"java/myJar.jar:java/myOtherJar.jar"`   |
+| useAbsoluteClassPaths | Set to true if classpaths should not be based on the rootPath                                                                                                                                                  | `false`              | `true`                                   |
+| mainClass             | If classPath set, main class to call                                                                                                                                                                           |                      | `"com.example.MyClass"`                  |
+| rootPath              | If classPath elements are not relative to the current folder, you can define a root path. <br/> You may use `__dirname` if you classes / jars are in your module folder                                        | `.` (current folder) | `"/home/my/folder/containing/jars"`      |
+| minimumJavaVersion    | Minimum java version to be used to call java command.<br/> If the java version found on machine is lower, java-caller will try to install and use the appropriate one                                          | `8`                  | `11`                                     |
+| maximumJavaVersion    | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one <br/> Can be equal to minimumJavaVersion |                      | `10`                                     |
+| javaType              | jre or jdk (if not defined and installation is required, jre will be installed)                                                                                                                                |                      | `"jre"`                                  |
+| additionalJavaArgs    | Additional parameters for JVM that will be added in every JavaCaller instance runs                                                                                                                             |                      | `["-Xms256m","-Xmx2048m"]`               |
+| javaExecutable        | You can force to use a defined java executable, instead of letting java-caller find/install one                                                                                                                |                      | `"/home/some-java-version/bin/java.exe"` |
+
 
 ### JAVA_ARGUMENTS
 
@@ -76,6 +78,16 @@ Call a class located in classpath
 ```javascript
 const java = new JavaCaller({
     classPath: 'test/java/dist',
+    mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+});
+const { status, stdout, stderr } = await java.run();
+```
+
+Call a class with multiple folders in the classPath
+
+```javascript
+const java = new JavaCaller({
+    classPath: ['C:\\pathA\\test\\java\\dist', 'C:\\pathB\\test\\java\\dist'],
     mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
 });
 const { status, stdout, stderr } = await java.run();
