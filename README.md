@@ -1,13 +1,12 @@
 <!-- markdownlint-disable MD033 -->
 # Java Caller for Node.js
 
-[![Version](https://img.shields.io/npm/v/java-caller.svg)](https://npmjs.org/package/node-java-caller)
+[![Version](https://img.shields.io/npm/v/java-caller.svg)](https://www.npmjs.com/package/java-caller)
 [![Downloads/week](https://img.shields.io/npm/dw/java-caller.svg)](https://npmjs.org/package/java-caller)
 [![Downloads/total](https://img.shields.io/npm/dt/java-caller.svg)](https://npmjs.org/package/java-caller)
 [![CircleCI](https://circleci.com/gh/nvuillam/node-java-caller/tree/master.svg?style=shield)](https://circleci.com/gh/nvuillam/node-java-caller/tree/master)
 [![Mega-Linter](https://github.com/nvuillam/node-java-caller/workflows/Mega-Linter/badge.svg)](https://github.com/nvuillam/mega-linter#readme)
 [![codecov](https://codecov.io/gh/nvuillam/node-java-caller/branch/master/graph/badge.svg)](https://codecov.io/gh/nvuillam/node-java-caller)
-[![Codacy Badge](https://app.codacy.com/project/badge/Grade/2f74d43c38764caab0c6f76a7a668df3)](https://www.codacy.com/manual/nvuillam/node-java-caller?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=nvuillam/node-java-caller&amp;utm_campaign=Badge_Grade)
 [![GitHub contributors](https://img.shields.io/github/contributors/nvuillam/node-java-caller.svg)](https://gitHub.com/nvuillam/node-java-caller/graphs/contributors/)
 [![GitHub stars](https://img.shields.io/github/stars/nvuillam/node-java-caller?label=Star&maxAge=2592000)](https://GitHub.com/nvuillam/node-java-caller/stargazers/)
 [![License](https://img.shields.io/npm/l/java-caller.svg)](https://github.com/nvuillam/node-java-caller/blob/master/LICENSE)
