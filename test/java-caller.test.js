@@ -36,12 +36,35 @@ describe("Call with classes", () => {
         checkStatus(0, status, stdout, stderr);
     });
 
+    it("should call JavaCallerTester.class with a classPath array", async () => {
+        const java = new JavaCaller({
+            classPath: ['test/java/dist'],
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run();
+
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
+    it("should call JavaCallerTester.class with absolute classpaths", async () => {
+        const java = new JavaCaller({
+            classPath: __dirname + '/java/dist',
+            useAbsoluteClassPaths: true,
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run();
+
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
     it("should use call JavaCallerTester.class with java and custom arguments", async () => {
         const java = new JavaCaller({
             classPath: 'test/java/dist',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
         });
-        const { status, stdout, stderr } = await java.run(['-Xms256m', '-Xmx2048m', '-customarg nico']);
+        const { status, stdout, stderr } = await java.run(['-Xms256m', '-Xmx1024m', '-customarg nico']);
 
         checkStatus(0, status, stdout, stderr);
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
@@ -120,4 +143,3 @@ describe("Call with classes", () => {
     });
 
 });
-

@@ -1,0 +1,36 @@
+{
+    "ignorePaths": [
+        "**/node_modules/**",
+        "**/vscode-extension/**",
+        "**/.git/**",
+        ".vscode",
+        "package-lock.json",
+        "report"
+    ],
+    "language": "en",
+    "version": "0.1",
+    "words": [
+        "CLASSPATH",
+        "Classpath",
+        "Perso",
+        "SIGINT",
+        "classpath",
+        "classpaths",
+        "codecov",
+        "customarg",
+        "javacaller",
+        "markdownlint",
+        "myfolder",
+        "myjar",
+        "nawak",
+        "nico",
+        "nimpor",
+        "njre",
+        "nvuillam",
+        "quoi",
+        "runned",
+        "someflag",
+        "someflagwithvalue",
+        "unhack"
+    ]
+}
