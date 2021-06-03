@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.3.0] 2020-09-05
+
+- Support absolute paths in classpath with argument `useAbsoluteClassPaths` and classPath as array of strings ([#12](https://github.com/nvuillam/node-java-caller/pull/12), by [Dan Gowans](https://github.com/dangowans))
+
 ## [2.2.3] 2020-09-05
 
 - Fix Java 8 detection ([#101@npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint/issues/101))
