@@ -69,6 +69,8 @@ Example: `["-Xms256m", "--someflagwithvalue myVal", "-c"]`
 | [detached](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)   | If set to true, node will node wait for the java command to be completed.<br/>In that case, `childJavaProcess` property will be returned, but `stdout` and `stderr` may be empty, except if an error is triggered at command execution | `false`         | `true`                  |
 | waitForErrorMs | If detached is true, number of milliseconds to wait to detect an error before exiting JavaCaller run                                                                             | `500`           | `2000`                  |
 | [cwd](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options)        | You can override cwd of spawn called by JavaCaller runner                                                                                                                        | `process.cwd()` | `some/other/cwd/folder` |
+| javaArgs       | List of arguments for JVM only, not the JAR or the class                                                                                                                        | `[]` | `['--add-opens=java.base/java.lang=ALL-UNNAMED']` |
+
 
 ## Examples
 

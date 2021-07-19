@@ -1,5 +1,9 @@
 # Changelog
 
+## [2.4.0] 2020-07-19
+
+- Fix additionalJavaArgs issue #13
+
 ## [2.3.0] 2020-09-05
 
 - Support absolute paths in classpath with argument `useAbsoluteClassPaths` and classPath as array of strings ([#12](https://github.com/nvuillam/node-java-caller/pull/12), by [Dan Gowans](https://github.com/dangowans))
