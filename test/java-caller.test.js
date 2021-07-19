@@ -72,6 +72,19 @@ describe("Call with classes", () => {
         checkStdOutIncludes(`nico`, stdout, stderr);
     });
 
+    it("should use call JavaCallerTester.class with javaArgs and custom arguments", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run(['-customarg','nico'],{javaArgs: ['-Xms256m', '-Xmx1024m']});
+
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+        checkStdOutIncludes(`-customarg`, stdout, stderr);
+        checkStdOutIncludes(`nico`, stdout, stderr);
+    });
+
     it("should call JavaCallerTester.class in JavaCallerTester.jar", async () => {
         const java = new JavaCaller({
             classPath: 'test/java/jar/JavaCallerTester.jar',
