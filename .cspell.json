@@ -26,6 +26,7 @@
         "javacaller",
         "lcov",
         "markdownlint",
+        "megalinter",
         "myfolder",
         "myjar",
         "nawak",
