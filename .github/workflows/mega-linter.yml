@@ -1,6 +1,6 @@
 ---
 # Mega-Linter GitHub Action configuration file
-# More info at https://github.com/megalinter/megalinter#readme
+# More info at https://github.com/oxsecurity/megalinter#readme
 name: Mega-Linter
 
 on:
@@ -16,16 +16,16 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
         with:
           fetch-depth: 0
 
       # Mega-Linter
       - name: Mega-Linter
-        uses: megalinter/megalinter@beta
+        uses: oxsecurity/megalinter@beta
         env:
           # All available variables are described in documentation
-          # https://github.com/megalinter/megalinter#configuration
+          # https://github.com/oxsecurity/megalinter#configuration
           VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' && github.ref == 'refs/heads/master' }} # Validates all source when push on master, else just the git diff with master. Override with true if you always want to lint all sources
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DISABLE_LINTERS: JAVASCRIPT_STANDARD
@@ -38,5 +38,5 @@ jobs:
         with:
           name: Mega-Linter reports
           path: |
-            report
+            megalinter-reports
             mega-linter.log

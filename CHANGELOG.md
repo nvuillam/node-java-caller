@@ -1,5 +1,10 @@
 # Changelog
 
+## [2.5.0] 2022-08-10
+
+- Upgrade NPM dependencies
+- CI: upgrade to [MegaLinter v6](https://oxsecurity.github.io/megalinter/latest/)
+
 ## [2.4.0] 2020-07-19
 
 - Fix additionalJavaArgs issue #13
