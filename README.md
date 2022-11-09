@@ -50,7 +50,7 @@ const {status, stdout, stderr} = java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_OPTIONS
 | maximumJavaVersion    | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one <br/> Can be equal to minimumJavaVersion |                      | `10`                                     |
 | javaType              | jre or jdk (if not defined and installation is required, jre will be installed)                                                                                                                                |                      | `"jre"`                                  |
 | additionalJavaArgs    | Additional parameters for JVM that will be added in every JavaCaller instance runs                                                                                                                             |                      | `["-Xms256m","-Xmx2048m"]`               |
-| javaExecutable        | You can force to use a defined java executable, instead of letting java-caller find/install one                                                                                                                |                      | `"/home/some-java-version/bin/java.exe"` |
+| javaExecutable        | You can force to use a defined java executable, instead of letting java-caller find/install one. Can also be defined with env var `JAVA_CALLER_JAVA_EXECUTABLE`                                                |                      | `"/home/some-java-version/bin/java.exe"` |
 
 
 ### JAVA_ARGUMENTS
