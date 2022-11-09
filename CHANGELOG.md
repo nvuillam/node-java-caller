@@ -5,6 +5,8 @@
 - Fix override of java executable on Linux & Mac environments ([#23](https://github.com/nvuillam/node-java-caller/pull/23))
 - Allow to use `JAVA_CALLER_JAVA_EXECUTABLE` environment variable to force javaExecutable option
 - Fix npm audit issues
+- Upgrade dependencies
+  - eslint
 
 ## [2.5.0] 2022-08-10
 

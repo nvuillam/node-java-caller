@@ -41,7 +41,7 @@
     "njre": "^0.2.0"
   },
   "devDependencies": {
-    "eslint": "^7.6.0",
+    "eslint": "^8.27.0",
     "mocha": "^8.1.1",
     "nyc": "^15.1.0",
     "which": "^2.0.2"
