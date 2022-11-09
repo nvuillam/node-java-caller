@@ -6,7 +6,13 @@
 - Allow to use `JAVA_CALLER_JAVA_EXECUTABLE` environment variable to force javaExecutable option
 - Fix npm audit issues
 - Upgrade dependencies
+  - debug
   - eslint
+  - fs-extra
+  - mocha
+  - njre
+  - nyc
+  - which
 
 ## [2.5.0] 2022-08-10
 
