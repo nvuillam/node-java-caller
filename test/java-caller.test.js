@@ -36,15 +36,15 @@ describe("Call with classes", () => {
         checkStatus(0, status, stdout, stderr);
     });
 
-    // it("should call JavaCallerTester.class with proper stdout encoding", async () => {
-    //     const java = new JavaCaller({
-    //         classPath: 'test/java/dist',
-    //         mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
-    //     });
-    //     const { status, stdout, stderr, childJavaProcess } = await java.run(['--sleep'], { stdoutEncoding: 'binary' });
-    //     childJavaProcess.kill('SIGINT');
-    //     checkStatus(0, status, stdout, stderr);
-    // });
+    it("should call JavaCallerTester.class with proper stdout encoding", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr, childJavaProcess } = await java.run(['--sleep'], { stdoutEncoding: 'binary' });
+        childJavaProcess.kill('SIGINT');
+        checkStatus(0, status, stdout, stderr);
+    });
 
     it("should call JavaCallerTester.class with a classPath array", async () => {
         const java = new JavaCaller({
