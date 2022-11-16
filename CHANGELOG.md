@@ -1,5 +1,8 @@
 # Changelog
 
+## [2.7.0] 2022-11-16
+
+- add stdoutEncoding option (default `utf8`) ([#26](https://github.com/nvuillam/node-java-caller/pull/26), by [danunafig](https://github.com/danunafig))
 ## [2.6.0] 2022-09-11
 
 - Fix override of java executable on Linux & Mac environments ([#23](https://github.com/nvuillam/node-java-caller/pull/23))
