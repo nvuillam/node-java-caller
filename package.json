@@ -1,6 +1,6 @@
 {
   "name": "java-caller",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "description": "Library to easily call java from node sources. Automatically installs java if not present",
   "main": "./lib/index.js",
   "files": [
