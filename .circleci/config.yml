@@ -64,7 +64,7 @@ jobs:
   # JDK 11 Node 12
   debian-jdk-11-node-18:
     docker:
-      - image: openjdk:11
+      - image: openjdk:11.0.16
     steps:
       - checkout
       - run:
@@ -120,7 +120,7 @@ jobs:
   # Java 14 & Node latest
   java-14-node-latest:
     docker:
-      - image: circleci/openjdk:14.0.1-buster-node
+      - image: circleci/openjdk:14.0.2-buster-node
     steps:
       - checkout
       - run:
