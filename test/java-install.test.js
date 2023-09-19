@@ -9,7 +9,7 @@ const {
     checkStdOutIncludesOneOf,
 } = require("./helpers/common");
 
-const javaVersionsToTest = [8, 9, 10, 11, 12, 13, 14];
+const javaVersionsToTest = [8, 9, 10, 11, 12, 13, 14, 17, 20];
 const javaTypesToTest = ['jre', 'jdk'];
 
 describe("Test all installs", () => {
