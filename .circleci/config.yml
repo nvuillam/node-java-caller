@@ -1,13 +1,13 @@
 version: 2.1
 
 orbs:
-  win: circleci/windows@2.2.0
+  win: circleci/windows@5.0.0
 
 jobs:
   # JDK 8 Node 12
-  debian-jdk-8-node-12:
+  debian-jdk-8-node-16:
     docker:
-      - image: openjdk:8-jdk-stretch
+      - image: openjdk:8
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
           command: apt-get update && apt-get upgrade -y && apt-get -y install wget zip unzip sudo && apt-get clean && echo 'Installed linux dependencies'
       - run:
           name: Install node
-          command: curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && apt-get install -y nodejs
+          command: curl -sL https://deb.nodesource.com/setup_16.x | bash - && apt-get update && apt-get install -y nodejs
       - run:
           name: Install dependencies
           command: npm ci
@@ -24,7 +24,7 @@ jobs:
           command: npm run test:debug
 
   # JDK 9 Node 12
-  debian-jdk-9-node-12:
+  debian-jdk-9-node-18:
     docker:
       - image: openjdk:9
     steps:
@@ -34,7 +34,7 @@ jobs:
           command: apt-get update && apt-get upgrade -y && apt-get -y install wget zip unzip sudo && apt-get clean && echo 'Installed linux dependencies'
       - run:
           name: Install node
-          command: curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && apt-get install -y nodejs
+          command: curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get update && apt-get install -y nodejs
       - run:
           name: Install dependencies
           command: npm ci
@@ -43,7 +43,7 @@ jobs:
           command: npm run test
 
   # JDK 10 Node 12
-  debian-jdk-10-node-12:
+  debian-jdk-10-node-18:
     docker:
       - image: openjdk:10
     steps:
@@ -53,7 +53,7 @@ jobs:
           command: apt-get update && apt-get upgrade -y && apt-get -y install wget zip unzip sudo && apt-get clean && echo 'Installed linux dependencies'
       - run:
           name: Install node
-          command: curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && apt-get install -y nodejs
+          command: curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get update && apt-get install -y nodejs
       - run:
           name: Install dependencies
           command: npm ci
@@ -62,7 +62,7 @@ jobs:
           command: npm run test
 
   # JDK 11 Node 12
-  debian-jdk-11-node-12:
+  debian-jdk-11-node-18:
     docker:
       - image: openjdk:11
     steps:
@@ -72,7 +72,7 @@ jobs:
           command: apt-get update && apt-get upgrade -y && apt-get -y install wget zip unzip sudo && apt-get clean && echo 'Installed linux dependencies'
       - run:
           name: Install node
-          command: curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && apt-get install -y nodejs
+          command: curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get update && apt-get install -y nodejs
       - run:
           name: Install dependencies
           command: npm ci
@@ -81,7 +81,7 @@ jobs:
           command: npm run test
 
   # JDK 12 Node 12
-  debian-jdk-12-node-12:
+  debian-jdk-12-node-18:
     docker:
       - image: openjdk:12-oracle
     steps:
@@ -91,7 +91,7 @@ jobs:
           command: apt-get update && apt-get upgrade -y && apt-get -y install wget zip unzip sudo && apt-get clean && echo 'Installed linux dependencies'
       - run:
           name: Install node
-          command: curl -sL https://deb.nodesource.com/setup_12.x | bash - && apt-get update && apt-get install -y nodejs
+          command: curl -sL https://deb.nodesource.com/setup_18.x | bash - && apt-get update && apt-get install -y nodejs
       - run:
           name: Install dependencies
           command: npm ci
@@ -148,7 +148,7 @@ workflows:
   version: 2
   "java-caller-lint-build-test":
     jobs:
-      - debian-jdk-8-node-12
+      - debian-jdk-8-node-16
       #         - debian-jdk-9-node-12
       #         - debian-jdk-10-node-12
       #      - debian-jdk-11-node-12
