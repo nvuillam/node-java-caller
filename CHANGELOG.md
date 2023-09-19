@@ -1,5 +1,10 @@
 # Changelog
 
+## [3.0.0] 2023-09-19
+
+- Upgrade njre to 1.0.0 (Allowing to install until Java 20)
+- Upgrade dependencies
+
 ## [2.7.0] 2022-11-16
 
 - add stdoutEncoding option (default `utf8`) ([#26](https://github.com/nvuillam/node-java-caller/pull/26), by [danunafig](https://github.com/danunafig))
