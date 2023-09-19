@@ -7,7 +7,7 @@ jobs:
   # JDK 8 Node 12
   debian-jdk-8-node-16:
     docker:
-      - image: openjdk:8-jdk-stretch
+      - image: openjdk:8
     steps:
       - checkout
       - run:
