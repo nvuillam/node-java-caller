@@ -1,5 +1,7 @@
 # Changelog
 
+- Add java 17 to test cases
+
 ## [3.0.0] 2023-09-19
 
 - Upgrade njre to 1.0.0 (Allowing to install until Java 20)
