@@ -7,7 +7,7 @@ jobs:
   # JDK 8 Node 12
   debian-jdk-8-node-16:
     docker:
-      - image: openjdk:8
+      - image: openjdk:17.0.2
     steps:
       - checkout
       - run:
@@ -26,7 +26,7 @@ jobs:
   # JDK 9 Node 12
   debian-jdk-9-node-18:
     docker:
-      - image: openjdk:9
+      - image: openjdk:17.0.2
     steps:
       - checkout
       - run:
@@ -45,7 +45,7 @@ jobs:
   # JDK 10 Node 12
   debian-jdk-10-node-18:
     docker:
-      - image: openjdk:10
+      - image: openjdk:17.0.2
     steps:
       - checkout
       - run:
@@ -64,7 +64,7 @@ jobs:
   # JDK 11 Node 12
   debian-jdk-11-node-18:
     docker:
-      - image: openjdk:11.0.16
+      - image: openjdk:17.0.2
     steps:
       - checkout
       - run:
@@ -83,7 +83,7 @@ jobs:
   # JDK 12 Node 12
   debian-jdk-12-node-18:
     docker:
-      - image: openjdk:12-oracle
+      - image: openjdk:17.0.2-oracle
     steps:
       - checkout
       - run:
