@@ -37,7 +37,7 @@
   "dependencies": {
     "debug": "^4.3.4",
     "fs-extra": "^10.1.0",
-    "njre": "^0.3.0"
+    "njre": "^1.0.0"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.19.1",
