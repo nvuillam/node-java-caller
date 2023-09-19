@@ -36,7 +36,7 @@
   "homepage": "https://github.com/nvuillam/node-java-caller#readme",
   "dependencies": {
     "debug": "^4.3.4",
-    "fs-extra": "^10.1.0",
+    "fs-extra": "^11.1.1",
     "njre": "^1.0.0"
   },
   "devDependencies": {
@@ -44,7 +44,7 @@
     "eslint": "^8.27.0",
     "mocha": "^10.1.0",
     "nyc": "^15.1.0",
-    "which": "^3.0.0"
+    "which": "^4.0.0"
   },
   "engines": {
     "node": ">=12.0.0"
