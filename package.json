@@ -40,7 +40,7 @@
     "njre": "^1.0.0"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.19.1",
+    "@babel/eslint-parser": "^7.22.15",
     "eslint": "^8.27.0",
     "mocha": "^10.1.0",
     "nyc": "^15.1.0",
