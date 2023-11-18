@@ -1,6 +1,11 @@
 # Changelog
 
+## [3.1.0] 2023-11-18
+
+- Use semver module to check found java version instead of custom code
 - Add java 17 to test cases
+- Automate and secure releases using GitHub Actions
+- Inclusivity: Rename git branch master into main 
 
 ## [3.0.0] 2023-09-19
 
