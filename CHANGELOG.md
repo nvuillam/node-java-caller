@@ -1,5 +1,9 @@
 # Changelog
 
+## [3.1.1] 2023-11-19
+
+- fix couple of issues in the rule used to detect if desired java version is installed or not, by @djukxe in https://github.com/nvuillam/node-java-caller/pull/46
+
 ## [3.1.0] 2023-11-18
 
 - Use semver module to check found java version instead of custom code
