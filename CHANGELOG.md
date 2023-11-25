@@ -1,15 +1,19 @@
 # Changelog
 
+## Unreleased
+
+- Add support for configuring windowsVerbatimArguments on run to make it easier to create cross platform compatible code.
+
 ## [3.1.1] 2023-11-19
 
-- fix couple of issues in the rule used to detect if desired java version is installed or not, by @djukxe in https://github.com/nvuillam/node-java-caller/pull/46
+- fix couple of issues in the rule used to detect if desired java version is installed or not, by [@djukxe](https://github.com/djukxe) in [#46](https://github.com/nvuillam/node-java-caller/pull/46)
 
 ## [3.1.0] 2023-11-18
 
 - Use semver module to check found java version instead of custom code
 - Add java 17 to test cases
 - Automate and secure releases using GitHub Actions
-- Inclusivity: Rename git branch master into main 
+- Inclusivity: Rename git branch master into main
 
 ## [3.0.0] 2023-09-19
 
@@ -19,6 +23,7 @@
 ## [2.7.0] 2022-11-16
 
 - add stdoutEncoding option (default `utf8`) ([#26](https://github.com/nvuillam/node-java-caller/pull/26), by [danunafig](https://github.com/danunafig))
+
 ## [2.6.0] 2022-09-11
 
 - Fix override of java executable on Linux & Mac environments ([#23](https://github.com/nvuillam/node-java-caller/pull/23))
