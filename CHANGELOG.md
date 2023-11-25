@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+## [3.1.2] 2023-11-25
+
 - Add support for configuring windowsVerbatimArguments on run to make it easier to create cross platform compatible code.
 
 ## [3.1.1] 2023-11-19
