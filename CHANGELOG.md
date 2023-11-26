@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [3.2.0] 2023-11-26
+
+- Upgrade njre to v1.1.0 (now handles Mac M1)
+
 ## [3.1.2] 2023-11-25
 
 - Add support for configuring windowsVerbatimArguments on run to make it easier to create cross platform compatible code.
