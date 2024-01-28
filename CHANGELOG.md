@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add option for using javaw instead of java on run for Windows, by [@SotirisVas](https://github.com/SotirisVas) in [#65](https://github.com/nvuillam/node-java-caller/issues/65)
+
 ## [3.2.0] 2023-11-26
 
 - Upgrade njre to v1.1.0 (now handles Mac M1)

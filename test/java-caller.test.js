@@ -36,6 +36,16 @@ describe("Call with classes", () => {
         checkStatus(0, status, stdout, stderr);
     });
 
+    it("should call JavaCallerTester.class using javaw", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run(['--sleep'], { windowless: true });
+        checkStatus(0, status, stdout, stderr);
+    });
+
+
     it("should call JavaCallerTester.class with proper stdout encoding", async () => {
         const java = new JavaCaller({
             classPath: 'test/java/dist',
