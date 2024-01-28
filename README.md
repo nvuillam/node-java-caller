@@ -72,6 +72,7 @@ Example: `["-Xms256m", "--someflagwithvalue myVal", "-c"]`
 | [cwd](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | You can override cwd of spawn called by JavaCaller runner | `process.cwd()` | `some/other/cwd/folder` |
 | javaArgs | List of arguments for JVM only, not the JAR or the class | `[]` | `['--add-opens=java.base/java.lang=ALL-UNNAMED']` |
 | [windowsVerbatimArguments](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to true automatically when shell is specified and is CMD. | `true` | `false` |
+| [windowless](https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#:~:text=main()%20method.-,javaw,information%20if%20a%20launch%20fails.) | If windowless is true, JavaCaller calls javaw instead of java to not create any windows, useful when using detached on Windows. Ignored on Unix. | false | true
 
 ## Examples
 
@@ -135,6 +136,16 @@ const { status, stdout, stderr, childJavaProcess } = await java.run(['--sleep'],
 
 // Kill later the java process if necessary
 childJavaProcess.kill('SIGINT');
+```
+
+Call a windowless java process
+
+```javascript
+const java = new JavaCaller({
+    classPath: 'test/java/dist',
+    mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+});
+const { status, stdout, stderr } = await java.run(['--sleep'], { windowless: true });
 ```
 
 You can see **more examples in** [**test methods**](https://github.com/nvuillam/node-java-caller/blob/master/test/java-caller.test.js)
