@@ -2,7 +2,11 @@
 
 ## Unreleased
 
+## [3.3.0] 2024-01-29
+
 - Add option for using javaw instead of java on run for Windows, by [@SotirisVas](https://github.com/SotirisVas) in [#65](https://github.com/nvuillam/node-java-caller/issues/65)
+- Add [github-dependents-info](https://github.com/nvuillam/node-java-caller/blob/main/docs/github-dependents-info.md) page and generation
+- Update minor dependencies
 
 ## [3.2.0] 2023-11-26
 
