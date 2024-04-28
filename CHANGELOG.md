@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [3.3.1] 2024-04-28
+
+- Upgrade tar dependency to avoid CVE
+
 ## [3.3.0] 2024-01-29
 
 - Add option for using javaw instead of java on run for Windows, by [@SotirisVas](https://github.com/SotirisVas) in [#65](https://github.com/nvuillam/node-java-caller/issues/65)
