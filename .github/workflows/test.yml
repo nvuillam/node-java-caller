@@ -22,6 +22,10 @@ jobs:
             java_version: '17'
             java_distrib: adopt
             os: ubuntu-latest
+        exclude:
+          # excludes node 8 on macOS
+          - os: macos-latest
+            java_version: '8'
     name: Test
     runs-on: ${{ matrix.os }}
     timeout-minutes: 15
