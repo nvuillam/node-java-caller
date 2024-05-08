@@ -41,7 +41,7 @@ jobs:
         run: npm ci
       - name: Run tests
         env:
-          DEBUG: java-caller
+          DEBUG: java-caller,njre
         run: npm run test
 
   coverage:
