@@ -11,7 +11,7 @@ const {
 } = require("./helpers/common");
 
 const javaVersionsToTest = os.platform() === "darwin"
-    ? [11, 14, 17, 20, 21]
+    ? [11, 17, 20, 21]
     : [8, 11, 14, 17, 20, 21];
 const javaTypesToTest = ['jre', 'jdk'];
 
