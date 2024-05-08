@@ -31,7 +31,8 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
-      - name: Install Java
+      - if: ${{ ! (matrix.os == "macos-latest" && matrix.java_version == 8 }}
+        name: Install Java
         uses: actions/setup-java@v3
         with:
           distribution: ${{ matrix.java_distrib }}
