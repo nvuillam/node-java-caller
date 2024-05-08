@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [3.4.0] 2024-05-08
+
+- Handle case where Java 21 is installed and we need 17 by using full path of java executable
+
 ## [3.3.1] 2024-04-28
 
 - Upgrade tar dependency to avoid CVE

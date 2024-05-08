@@ -130,10 +130,23 @@ jobs:
           name: Testing
           command: npm run test:debug
 
-  # Java 14 & Node latest
+  # Java 17 & Node latest
   java-17-node-latest:
     docker:
       - image: circleci/openjdk:17.0.1-buster-node
+    steps:
+      - checkout
+      - run:
+          name: Install dependencies
+          command: npm ci
+      - run:
+          name: Testing
+          command: npm run test:debug
+
+  # Java 21 & Node latest
+  java-21-node-latest:
+    docker:
+      - image: cimg/openjdk:21.0.2-node
     steps:
       - checkout
       - run:
@@ -169,4 +182,5 @@ workflows:
       - no-java-node-latest
       - java-14-node-latest
       - java-17-node-latest
+      - java-21-node-latest
       - windows
