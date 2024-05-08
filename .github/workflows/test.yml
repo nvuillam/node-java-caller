@@ -1,0 +1,73 @@
+name: Test
+
+on: [push, pull_request]
+
+permissions: read-all
+
+concurrency:
+  group: ${{ github.ref_name }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    strategy:
+      matrix:
+        node_version: ['18','20']
+        java_version: ['8','11','17','21']
+        java_distrib: [temurin]
+        os: [ubuntu-latest, macos-latest, windows-latest]
+        include:
+          - node_version: '18'
+            java_version: '17'
+            java_distrib: adopt
+            os: ubuntu-latest
+    name: Test
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node_version }}
+      - name: Install Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: ${{ matrix.java_distrib }}
+          java-version: ${{ matrix.java_version }}
+      - name: Install dependencies and link
+        run: npm ci
+      - name: Run tests
+        run: npm run test
+
+  coverage:
+    name: Test - No Java - CodeCov
+    strategy:
+      matrix:
+        debian_version: [bookworm]
+        node_version: ['18']
+        os: [ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    container:
+      image: "node:${{ matrix.node_version }}-${{ matrix.debian_version }}"
+    timeout-minutes: 15
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+      - name: Install dependencies and link
+        run: npm ci
+      - name: Run tests
+        env:
+          DEBUG: "java-caller"
+        run: npm run test:coverage
+      - name: Build coverage report
+        run: ./node_modules/.bin/nyc report --reporter text-lcov > coverage.lcov
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          fail_ci_if_error: true
+          file: coverage.lcov
+          flags: unittests
+          verbose: true
+          dry_run: true
