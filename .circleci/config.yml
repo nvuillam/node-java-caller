@@ -167,7 +167,6 @@ workflows:
       #      - debian-jdk-11-node-12
       #         - debian-jdk-12-node-12 JDK12 image not working because of apt-get not found ... TODO: investigate
       - no-java-node-latest
-      - java-14-node-latest
       - java-17-node-latest
       - java-21-node-latest
       - windows
