@@ -11,6 +11,7 @@ concurrency:
 jobs:
   test:
     strategy:
+      fail-fast: false
       matrix:
         node_version: ['18','20']
         java_version: ['8','11','17','21']
