@@ -40,6 +40,8 @@ jobs:
       - name: Install dependencies and link
         run: npm ci
       - name: Run tests
+        env:
+          DEBUG: java-caller
         run: npm run test
 
   coverage:
