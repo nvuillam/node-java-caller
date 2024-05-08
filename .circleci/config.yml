@@ -117,19 +117,6 @@ jobs:
             ./node_modules/.bin/nyc report --reporter text-lcov > coverage.lcov
             curl -s https://codecov.io/bash | bash
 
-  # Java 14 & Node latest
-  java-14-node-latest:
-    docker:
-      - image: circleci/openjdk:14.0.2-buster-node
-    steps:
-      - checkout
-      - run:
-          name: Install dependencies
-          command: npm ci
-      - run:
-          name: Testing
-          command: npm run test:debug
-
   # Java 17 & Node latest
   java-17-node-latest:
     docker:
