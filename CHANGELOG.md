@@ -11,6 +11,7 @@
 - Refactor CI/CD
   - Move tests to GitHub Actions
   - Test in more contexts (Mac, Java 21...)
+- Java 8 on Mac is not supported: Set default minimum java version to 11 on Mac
 
 ## [3.3.1] 2024-04-28
 
