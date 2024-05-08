@@ -8,6 +8,7 @@
   - Before 4.00: Update PATH + `java -cp /home/circleci/project/test/java/dist com.nvuillam.javacaller.JavaCallerTester`
   - Since 4.0.0: Update PATH + `/home/circleci/.java-caller/jre/jdk-20.0.2+9/bin/java -cp /home/circleci/project/test/java/dist com.nvuillam.javacaller.JavaCallerTester`
   - For example handles issue where Java 21 is installed and you need to run Java 17 with JavaCaller
+- CI: Check compatiblity with Java 21
 
 ## [3.3.1] 2024-04-28
 
