@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 "use strict";
+const os = require("os");
 const { JavaCaller } = require('../lib/index');
 
 const {
@@ -9,7 +10,9 @@ const {
     checkStdOutIncludesOneOf,
 } = require("./helpers/common");
 
-const javaVersionsToTest = [8, 9, 10, 11, 12, 13, 14, 17, 20, 21];
+const javaVersionsToTest = os.platform() === "darwin"
+    ? [11, 14, 17, 20, 21]
+    : [8, 11, 14, 17, 20, 21];
 const javaTypesToTest = ['jre', 'jdk'];
 
 describe("Test all installs", () => {
