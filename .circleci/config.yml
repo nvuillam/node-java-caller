@@ -117,10 +117,10 @@ jobs:
             ./node_modules/.bin/nyc report --reporter text-lcov > coverage.lcov
             curl -s https://codecov.io/bash | bash
 
-  # Java 14 & Node latest
-  java-14-node-latest:
+  # Java 17 & Node latest
+  java-17-node-latest:
     docker:
-      - image: circleci/openjdk:14.0.2-buster-node
+      - image: circleci/openjdk:17.0.1-buster-node
     steps:
       - checkout
       - run:
@@ -130,10 +130,10 @@ jobs:
           name: Testing
           command: npm run test:debug
 
-  # Java 14 & Node latest
-  java-17-node-latest:
+  # Java 21 & Node latest
+  java-21-node-latest:
     docker:
-      - image: circleci/openjdk:17.0.1-buster-node
+      - image: cimg/openjdk:21.0.2-node
     steps:
       - checkout
       - run:
@@ -167,6 +167,6 @@ workflows:
       #      - debian-jdk-11-node-12
       #         - debian-jdk-12-node-12 JDK12 image not working because of apt-get not found ... TODO: investigate
       - no-java-node-latest
-      - java-14-node-latest
       - java-17-node-latest
+      - java-21-node-latest
       - windows

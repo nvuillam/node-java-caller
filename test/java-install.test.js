@@ -1,5 +1,6 @@
 #! /usr/bin/env node
 "use strict";
+const os = require("os");
 const { JavaCaller } = require('../lib/index');
 
 const {
@@ -9,18 +10,20 @@ const {
     checkStdOutIncludesOneOf,
 } = require("./helpers/common");
 
-const javaVersionsToTest = [8, 9, 10, 11, 12, 13, 14, 17, 20];
+const javaVersionsToTest = os.platform() === "darwin"
+    ? [11, 17, 20, 21]
+    : [8, 11, 14, 17, 20, 21];
 const javaTypesToTest = ['jre', 'jdk'];
 
 describe("Test all installs", () => {
     beforeEach(beforeEachTestCase);
 
-    it(`should use Java jre from 10 to 12`, async () => {
+    it(`should use Java jre from 17 to 21`, async () => {
         const java = new JavaCaller({
             classPath: 'test/java/dist',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester',
-            minimumJavaVersion: 10,
-            maximumJavaVersion: 12,
+            minimumJavaVersion: 17,
+            maximumJavaVersion: 21,
             javaType: "jre"
         });
         const { status, stdout, stderr } = await java.run();
@@ -28,9 +31,8 @@ describe("Test all installs", () => {
         checkStatus(0, status, stdout, stderr);
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
         checkStdOutIncludesOneOf([
-            `Java runtime version 10`,
-            `Java runtime version 11`,
-            `Java runtime version 12`
+            `17`,
+            `21`
         ], stdout, stderr)
     });
 
