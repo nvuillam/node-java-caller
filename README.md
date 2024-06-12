@@ -16,7 +16,7 @@
 Lightweight cross-platform javascript module to **easily call java commands from Node.js sources**.
 
 - **Automatically installs required Java version** if not present on the system
-- Compliant with **JDK & JRE** from **8 to 20**
+- Compliant with **JDK & JRE** from **8 to 21**
 - Uses node [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) method to perform the call
 
 There are two ways to use java-caller:
@@ -35,7 +35,7 @@ npm install java-caller --save
 ```javascript
 const JavaCaller = require('java-caller');
 const java = new JavaCaller(JAVA_CALLER_OPTIONS);
-const {status, stdout, stderr} = java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_OPTIONS);
+const {status, stdout, stderr} = await java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_OPTIONS);
 ```
 
 ### JAVA_CALLER_OPTIONS
