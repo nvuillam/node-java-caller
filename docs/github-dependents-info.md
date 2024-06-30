@@ -9,7 +9,7 @@
 | :--------  | -----: |
 |<img class="avatar mr-2" src="https://avatars.githubusercontent.com/u/47812383?s=40&v=4" width="20" height="20" alt="">  &nbsp; [Checkmk](https://github.com/Checkmk) / [checkmk](https://github.com/Checkmk/checkmk) | 1460 |
 |<img class="avatar mr-2" src="https://avatars.githubusercontent.com/u/17500430?s=40&v=4" width="20" height="20" alt="">  &nbsp; [nvuillam](https://github.com/nvuillam) / [npm-groovy-lint](https://github.com/nvuillam/npm-groovy-lint) | 193 |
-|<img class="avatar mr-2" src="https://avatars.githubusercontent.com/u/33221035?s=40&v=4" width="20" height="20" alt="">  &nbsp; [nix-community](https://github.com/nix-community) / [nur-combined](https://github.com/nix-community/nur-combined) | 111 |
+|<img class="avatar mr-2" src="https://avatars.githubusercontent.com/u/33221035?s=40&v=4" width="20" height="20" alt="">  &nbsp; [nix-community](https://github.com/nix-community) / [nur-combined](https://github.com/nix-community/nur-combined) | 112 |
 |<img class="avatar mr-2" src="https://avatars.githubusercontent.com/u/17500430?s=40&v=4" width="20" height="20" alt="">  &nbsp; [nvuillam](https://github.com/nvuillam) / [vscode-groovy-lint](https://github.com/nvuillam/vscode-groovy-lint) | 68 |
 |<img class="avatar mr-2" src="https://avatars.githubusercontent.com/u/49566968?s=40&v=4" width="20" height="20" alt="">  &nbsp; [oslabs-beta](https://github.com/oslabs-beta) / [saamsa](https://github.com/oslabs-beta/saamsa) | 49 |
 |<img class="avatar mr-2" src="https://avatars.githubusercontent.com/u/17500430?s=40&v=4" width="20" height="20" alt="">  &nbsp; [nvuillam](https://github.com/nvuillam) / [node-java-caller](https://github.com/nvuillam/node-java-caller) | 38 |
