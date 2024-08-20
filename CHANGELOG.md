@@ -2,8 +2,10 @@
 
 ## Unreleased
 
+## [4.1.0] 2024-08-20
+
 - Upgrade to MegaLinter v8
-- Upgrade npm dependencies
+- Upgrade npm dependencies, including base package njre to 1.3.0
 
 ## [4.0.0] 2024-05-08
 
