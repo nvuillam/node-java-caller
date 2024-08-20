@@ -78,4 +78,3 @@ jobs:
           flags: unittests
           token: ${{ secrets.CODECOV_TOKEN }} # required
           verbose: true
-
