@@ -2,6 +2,24 @@
 
 ## Unreleased
 
+- Upgrade to MegaLinter v8
+- Upgrade npm dependencies
+
+## [4.0.0] 2024-05-08
+
+- When java used has been installed by JavaCaller, use full java executable path to perform the calls
+  - Before 4.00: Update PATH + `java -cp /home/circleci/project/test/java/dist com.nvuillam.javacaller.JavaCallerTester`
+  - Since 4.0.0: Update PATH + `/home/circleci/.java-caller/jre/jdk-20.0.2+9/bin/java -cp /home/circleci/project/test/java/dist com.nvuillam.javacaller.JavaCallerTester`
+  - For example handles issue where Java 21 is installed and you need to run Java 17 with JavaCaller
+- Refactor CI/CD
+  - Add additional tests in GitHub Actions
+  - Test in more contexts (Mac, Java 21...)
+- Java 8 and 14 on Mac are not supported: Set default minimum java version to 11 on Mac
+
+## [3.3.1] 2024-04-28
+
+- Upgrade tar dependency to avoid CVE
+
 ## [3.3.0] 2024-01-29
 
 - Add option for using javaw instead of java on run for Windows, by [@SotirisVas](https://github.com/SotirisVas) in [#65](https://github.com/nvuillam/node-java-caller/issues/65)

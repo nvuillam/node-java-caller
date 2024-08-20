@@ -25,6 +25,7 @@
         "Vas",
         "Vuillamy",
         "badgemarkdownfile",
+        "cimg",
         "circleci",
         "classpath",
         "classpaths",
@@ -32,6 +33,7 @@
         "customarg",
         "cvfm",
         "danunafig",
+        "distrib",
         "djukxe",
         "javac",
         "javacaller",
@@ -56,6 +58,8 @@
         "socio",
         "someflag",
         "someflagwithvalue",
-        "unhack"
+        "temurin",
+        "unhack",
+        "unittests"
     ]
 }
