@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Upgrade to MegaLinter v8
+- Upgrade npm dependencies
+
 ## [4.0.0] 2024-05-08
 
 - When java used has been installed by JavaCaller, use full java executable path to perform the calls

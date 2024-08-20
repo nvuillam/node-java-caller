@@ -1,2 +1,3 @@
 DISABLE_ERRORS_LINTERS:
   - ACTION_ACTIONLINT
+FILTER_REGEX_EXCLUDE: (docs\/github-dependents-info\.md|package-lock\.json)
