@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [4.1.1] 2024-08-30
+
+- Upgrade to njre v1.4.0
+- Fix issue when package called from ES Module by using njre installPath option
+
 ## [4.1.0] 2024-08-20
 
 - Upgrade to MegaLinter v8
