@@ -133,7 +133,7 @@ jobs:
   # Java 21 & Node latest
   java-21-node-latest:
     docker:
-      - image: cimg/openjdk:21.0.2-node
+      - image: cimg/openjdk:21.0.5-node
     steps:
       - checkout
       - run:
