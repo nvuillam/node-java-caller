@@ -3,6 +3,7 @@
 const { JavaCaller } = require('../lib/index');
 const os = require("os");
 const which = require("which");
+const path = require('path');
 
 const {
     beforeEachTestCase,
@@ -175,4 +176,13 @@ describe("Call with classes", () => {
         await javaCli.process();
     });
 
+    it("Should work with an absolute path", async () => {
+        const java = new JavaCaller({
+            jar: path.join(process.cwd(), "test/java/jar/JavaCallerTesterRunnable.jar"),
+        });
+        const { status, stdout, stderr } = await java.run();
+
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
 });

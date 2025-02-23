@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix to allow absolute path to JAR file
+
 ## [4.1.1] 2024-08-30
 
 - Upgrade to njre v1.4.0
