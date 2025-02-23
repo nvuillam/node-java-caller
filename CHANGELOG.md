@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [4.2.0] 2025-02-23
+
+- Upgrade to njre v1.4.2
+- Upgrade dependencies
+
 ## [4.1.1] 2024-08-30
 
 - Upgrade to njre v1.4.0
