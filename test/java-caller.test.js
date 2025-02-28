@@ -177,8 +177,10 @@ describe("Call with classes", () => {
     });
 
     it("Should work with an absolute path", async () => {
+        const absolutePath = path.join(process.cwd(), "test/java/jar/JavaCallerTesterRunnable.jar");
+
         const java = new JavaCaller({
-            jar: path.join(process.cwd(), "test/java/jar/JavaCallerTesterRunnable.jar"),
+            jar: absolutePath,
         });
         const { status, stdout, stderr } = await java.run();
 
