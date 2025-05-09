@@ -4,7 +4,7 @@
 
 Run the following commands :
 
-- `npm run install-locale-cli`
+- `npm run install-local-cli`
 - `npm run run:cli:verbose`
 
 ## Use this folder as a starter project
