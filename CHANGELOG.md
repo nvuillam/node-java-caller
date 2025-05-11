@@ -2,7 +2,10 @@
 
 ## Unreleased
 
+## [4.2.1] 2025-05-25
+
 - Fix to allow absolute path to JAR file
+- Upgrade dependencies
 
 ## [4.2.0] 2025-02-23
 
