@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [4.3.1] 2025-12-04
+
+- Upgrade njre dependency
+
 ## [4.3.0] 2025-12-03
 
 - Add tests for Node 24 & Java 25
