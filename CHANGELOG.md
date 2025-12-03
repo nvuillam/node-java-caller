@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+## [4.3.0] 2025-12-03
+
+- Add tests for Node 24 & Java 25
 - CI: Upgrade MegaLinter to v9
 - CI: Remove CircleCI
 - Upgrade dependencies
