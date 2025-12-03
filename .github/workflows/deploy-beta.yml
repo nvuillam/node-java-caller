@@ -36,7 +36,7 @@ jobs:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v4.4.0
         with:
-          node-version: "22.x"
+          node-version: "24.x"
           registry-url: "https://registry.npmjs.org"
           scope: nvuillam
       - run: npm ci
