@@ -1,3 +1,4 @@
 DISABLE_ERRORS_LINTERS:
   - ACTION_ACTIONLINT
+  - SPELL_LYCHEE
 FILTER_REGEX_EXCLUDE: (docs\/github-dependents-info\.md|package-lock\.json)
