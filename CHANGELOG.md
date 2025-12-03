@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- CI: Upgrade MegaLinter to v9
+- CI: Remove CircleCI
+- Upgrade dependencies
+
 ## [4.2.1] 2025-05-25
 
 - Fix to allow absolute path to JAR file

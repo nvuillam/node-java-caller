@@ -24,13 +24,13 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           fetch-depth: 0
 
       # Mega-Linter
       - name: Mega-Linter
-        uses: oxsecurity/megalinter/flavors/cupcake@v8
+        uses: oxsecurity/megalinter/flavors/cupcake@v9
         env:
           # All available variables are described in documentation
           # https://github.com/oxsecurity/megalinter#configuration
