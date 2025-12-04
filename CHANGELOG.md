@@ -5,6 +5,7 @@
 ## [4.3.1] 2025-12-04
 
 - Upgrade njre dependency
+- CI: avoid jobs in double
 
 ## [4.3.0] 2025-12-03
 
