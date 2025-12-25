@@ -2,25 +2,30 @@
 
 ## Summary
 
-The package is utilized by several prominent organizations and specialized technical teams.
+The package is utilized by 159 dependents, including 90 public repositories, with a combined total of 852 stars.
 
-*   **Elastic** uses the package within their **elasticsearch-specification** repository.
-*   **HeinleinSupport** integrates it into their **checkMK** monitoring solutions.
-*   **Cityssm** employs it across multiple municipal management tools, including **corporate-records-manager** and **contract-expiration-tracker**.
-*   **CausalLabs** and **Dxworks** utilize the package for internal sandboxes and data analysis tools like **inspector-git**.
+**Popular Companies and Organizations**
 
-The repository names suggest the package is a key component in various development and automation ecosystems.
+*   **Elastic** uses the package for their **elasticsearch-specification** project.
+*   **HeinleinSupport** integrates it within their **checkMK** monitoring solutions.
+*   **CitySSM** utilizes it across multiple municipal management tools like **corporate-records-manager** and **contract-expiration-tracker**.
+*   **Oslabs-beta** employs it for the **saamsa** project.
+*   **Docupike** and **CausalLabs** also maintain repositories dependent on this package.
 
-*   **Groovy Ecosystem**: It is a core dependency for **npm-groovy-lint** and **vscode-groovy-lint**, facilitating linting for Groovy and Jenkins pipelines.
-*   **Monitoring and IT Management**: Multiple forks and implementations of **checkmk** rely on this package for system monitoring.
-*   **CI/CD and DevOps**: It is integrated into **MegaLinter** and various **Jenkins** testing environments to manage Java-based processes.
+**Popular Tools and Ecosystems**
 
-Several high-star repositories demonstrate the package's reliability in popular open-source projects.
+*   **Groovy** development tools are a primary use case, specifically for **npm-groovy-lint** and **vscode-groovy-lint**.
+*   **Checkmk** monitoring extensions feature heavily, with numerous community forks and implementations.
+*   **MegaLinter** includes the package in its multi-language linting suite.
+*   **Jenkins** CI/CD workflows are supported through various testing and integration repositories.
+*   **DXWorks** uses the package for software analysis tools like **inspector-git** and **depminer**.
 
-*   **Nomi-CEu/Nomi-CEu**: A highly popular repository with 270 stars.
-*   **nvuillam/npm-groovy-lint**: A significant dependent with 239 stars.
-*   **oslabs-beta/saamsa**: A notable project with 49 stars.
-*   **andreialecu/yarn-cache-remover**: A utility tool with 7 stars.
+**Notable High-Star Dependent Repositories**
+
+*   **Nomi-CEu/Nomi-CEu**: A high-traffic repository with 270 stars.
+*   **nvuillam/npm-groovy-lint**: A significant tool in the linting ecosystem with 239 stars.
+*   **elastic/elasticsearch-specification**: A major industry project with 150 stars.
+*   **nvuillam/vscode-groovy-lint**: A popular editor extension with 84 stars.
 
 ## Package nvuillam/node-java-caller
 
