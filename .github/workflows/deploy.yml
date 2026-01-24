@@ -1,0 +1,64 @@
+---
+name: 'Build & Deploy'
+
+on:
+  push:
+    branches:
+      - main
+  release:
+    types:
+      - published
+
+permissions:
+  contents: read
+  id-token: write
+
+concurrency:
+  group: ${{ github.ref_name }}-${{ github.workflow }}
+  cancel-in-progress: true
+
+jobs:
+  deploy_beta:
+    name: Deploy to NPM (beta)
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    environment:
+      name: release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: nvuillam
+      - run: npm ci
+      - run: |
+          git config --global user.name nvuillam
+          git config --global user.email nicolas.vuillamy@gmail.com
+      - name: Bump beta prerelease version
+        run: |
+          BETAID=$(date '+%Y%m%d%H%M')
+          npm version prerelease --preid="beta${BETAID}"
+        shell: bash
+      - name: Publish beta package
+        run: npm publish --tag beta --provenance
+
+  deploy_release:
+    name: Deploy to NPM (release)
+    if: github.event_name == 'release' && github.event.action == 'created'
+    runs-on: ubuntu-latest
+    environment:
+      name: release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.x'
+          registry-url: 'https://registry.npmjs.org'
+          scope: nvuillam
+      - run: npm ci
+      - run: |
+          git config --global user.name nvuillam
+          git config --global user.email nicolas.vuillamy@gmail.com
+      - name: Publish release package
+        run: npm publish --provenance
