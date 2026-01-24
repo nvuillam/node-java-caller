@@ -45,7 +45,7 @@ jobs:
 
   deploy_release:
     name: Deploy to NPM (release)
-    if: github.event_name == 'release' && github.event.action == 'created'
+    if: github.event_name == 'release'
     runs-on: ubuntu-latest
     environment:
       name: release
