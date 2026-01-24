@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [4.3.2] 2025-01-24
+
+- Upgrade dependencies
+- Refactor workflows to use OIDC (npm Trusted Publishers) to publish package
+
 ## [4.3.1] 2025-12-04
 
 - Upgrade njre dependency
