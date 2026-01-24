@@ -7,7 +7,7 @@ on:
       - main
   release:
     types:
-      - published
+      - released
 
 permissions:
   contents: read
