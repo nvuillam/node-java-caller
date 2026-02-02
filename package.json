@@ -8,7 +8,7 @@
   ],
   "scripts": {
     "lint:fix": "eslint **/*.js --fix && prettier --write \"./lib/**/*.{js,jsx,json}\" --tab-width 4 --print-width 150",
-    "java:compile": "javac -d test/java/dist -source 8 -target 1.8 test/java/src/com/nvuillam/javacaller/JavaCallerTester.java",
+    "java:compile": "javac -d test/java/dist --release 8 test/java/src/com/nvuillam/javacaller/JavaCallerTester.java",
     "java:jar": "cd test/java/dist && jar -cvfm ./../jar/JavaCallerTester.jar ./../jar/manifest/Manifest.txt com/nvuillam/javacaller/*.class && jar -cvfm ./../jar/JavaCallerTesterRunnable.jar ./../jar/manifest-runnable/Manifest.txt com/nvuillam/javacaller/*.class",
     "test": "mocha \"test/**/*.test.js\"",
     "test:coverage": "nyc npm run test",

@@ -31,9 +31,21 @@ describe("Call with classes", () => {
             classPath: 'test/java/dist',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
         });
+
+        // JavaCallerTester will sleep for 1000 ms
+        // After waitForErrorMs (500 ms), the promise will return
         const { status, stdout, stderr, childJavaProcess } = await java.run(['--sleep'], { detached: true });
-        childJavaProcess.kill('SIGINT');
-        checkStatus(0, status, stdout, stderr);
+
+        // Java process is still running
+        checkStatus(null, status, stdout, stderr);
+
+        return new Promise(resolve => {
+            // Java process has finished executing and the exit code can be read
+            childJavaProcess.on('exit', () => {
+                checkStatus(0, childJavaProcess.exitCode, stdout, stderr);
+                resolve();
+            });
+        });
     });
 
     it("should call JavaCallerTester.class using javaw", async () => {
@@ -175,4 +187,37 @@ describe("Call with classes", () => {
         await javaCli.process();
     });
 
+    it("should terminate once timeout is reached", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run(["--sleep"], { timeout: 500 });
+
+        checkStatus(666, status, stdout, stderr);
+        checkStdErrIncludes(`timed out`, stdout, stderr);
+    });
+
+    it("should not terminate if process finished before timeout is reached", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run(["--sleep"], { timeout: 1500 });
+
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
+    it("should terminate with custom killSignal when timeout is reached", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run(["--sleep"], { timeout: 500, killSignal: "SIGINT" });
+
+        checkStatus(666, status, stdout, stderr);
+        checkStdErrIncludes(`timed out`, stdout, stderr);
+        checkStdErrIncludes(`SIGINT`, stdout, stderr);
+    });
 });

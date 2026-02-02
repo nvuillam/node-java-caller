@@ -9,16 +9,16 @@ public class JavaCallerTester
     {
         System.out.println("JavaCallerTester is called !");
         System.out.println(java.util.Arrays.toString(args));
-        if (args.length > 0 && args[0] != null && args[0] == "--sleep") {
+        if (args.length > 0 && args[0] != null && args[0].equals("--sleep")) {
             try {
-                TimeUnit.MINUTES.sleep(1);
+                TimeUnit.MILLISECONDS.sleep(1000);
             } catch (InterruptedException eInterrupt) {
                 System.err.println("JavaCallerTester interrupted !");
             } catch (Throwable t) {
                 System.err.println("JavaCallerTester crashed !");
             }
         }
-        System.out.println("Java runtime version "+getVersion());
+        System.out.println("Java runtime version " + getVersion());
     }
 
     private static int getVersion() {
