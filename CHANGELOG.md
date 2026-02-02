@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add `timeout` and `killSignal` run options
+
 ## [4.1.1] 2024-08-30
 
 - Upgrade to njre v1.4.0
