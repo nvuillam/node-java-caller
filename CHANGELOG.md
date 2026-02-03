@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+## [4.3.3] 2025-02-03
+
+- Add types definition to make library compliant with typescript usage
+- Upgrade dependencies
+
 ## [4.3.2] 2025-01-24
 
 - Upgrade dependencies
