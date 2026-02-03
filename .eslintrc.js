@@ -22,7 +22,12 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
     requireConfigFile: false,
-    sourceType: "module"
+    sourceType: "module",
+    babelOptions: {
+      parserOpts: {
+        plugins: ["typescript"]
+      }
+    }
   },
   rules: {
     "indent": "off" // Managed by prettier
