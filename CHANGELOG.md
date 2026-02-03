@@ -6,6 +6,7 @@
 
 - Add types definition to make library compliant with typescript usage
 - Upgrade dependencies
+- CI: Use MegaLinter javaascript flavor for better performance
 
 ## [4.3.2] 2025-01-24
 
