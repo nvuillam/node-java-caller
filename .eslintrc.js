@@ -29,6 +29,15 @@ module.exports = {
       }
     }
   },
+  overrides: [
+    {
+      files: ["**/*.d.ts"],
+      parser: "@typescript-eslint/parser",
+      rules: {
+        "getter-return": "off"
+      }
+    }
+  ],
   rules: {
     "indent": "off" // Managed by prettier
   }
