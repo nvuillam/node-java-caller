@@ -1,6 +1,5 @@
-/// <reference types="node" />
 
-import type { ChildProcess } from "child_process";
+/// <reference types="node" />
 
 /**
  * Options for JavaCaller constructor
@@ -141,7 +140,7 @@ export interface JavaCallerResult {
     /**
      * Child process object (useful when detached is true)
      */
-    childJavaProcess?: ChildProcess;
+    childJavaProcess?: import('child_process').ChildProcess;
 }
 
 /**
