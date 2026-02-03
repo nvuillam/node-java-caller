@@ -3,6 +3,7 @@
   "version": "4.3.2",
   "description": "Library to easily call java from node sources. Automatically installs java if not present",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
     "lib/"
   ],
@@ -26,6 +27,7 @@
     "node",
     "npm",
     "javascript",
+    "typescript",
     "class"
   ],
   "author": "Nicolas Vuillamy",
@@ -42,10 +44,12 @@
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
+    "@types/node": "^25.2.0",
     "eslint": "^9.0.0",
     "mocha": "^11.0.0",
     "nyc": "^17.0.0",
     "prettier": "^3.1.0",
+    "typescript": "^5.9.3",
     "which": "^6.0.0"
   },
   "engines": {

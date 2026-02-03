@@ -22,8 +22,22 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018,
     requireConfigFile: false,
-    sourceType: "module"
+    sourceType: "module",
+    babelOptions: {
+      parserOpts: {
+        plugins: ["typescript"]
+      }
+    }
   },
+  overrides: [
+    {
+      files: ["**/*.d.ts"],
+      parser: "@typescript-eslint/parser",
+      rules: {
+        "getter-return": "off"
+      }
+    }
+  ],
   rules: {
     "indent": "off" // Managed by prettier
   }
