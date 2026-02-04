@@ -128,7 +128,7 @@ export interface JavaCallerRunOptions {
     /**
      * If windowless is true, JavaCaller calls javaw instead of java to not create any windows,
      * useful when using detached on Windows. Ignored on Unix.
-     * @default undefined
+     * @default "SIGTERM"
      */
     killSignal?: number | NodeJS.Signals;
 }
