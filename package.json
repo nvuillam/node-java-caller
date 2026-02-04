@@ -1,8 +1,9 @@
 {
   "name": "java-caller",
-  "version": "4.1.1",
+  "version": "4.3.3",
   "description": "Library to easily call java from node sources. Automatically installs java if not present",
   "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "files": [
     "lib/"
   ],
@@ -26,6 +27,7 @@
     "node",
     "npm",
     "javascript",
+    "typescript",
     "class"
   ],
   "author": "Nicolas Vuillamy",
@@ -37,16 +39,18 @@
   "dependencies": {
     "debug": "^4.3.4",
     "fs-extra": "^11.1.1",
-    "njre": "^1.4.0",
+    "njre": "^1.5.0",
     "semver": "^7.5.4"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.22.15",
+    "@types/node": "^25.2.0",
     "eslint": "^9.0.0",
-    "mocha": "^10.1.0",
+    "mocha": "^11.0.0",
     "nyc": "^17.0.0",
     "prettier": "^3.1.0",
-    "which": "^4.0.0"
+    "typescript": "^5.9.3",
+    "which": "^6.0.0"
   },
   "engines": {
     "node": ">=12.0.0"

@@ -4,6 +4,39 @@
 
 - Add `timeout` and `killSignal` run options
 
+## [4.3.3] 2025-02-03
+
+- Add types definition to make library compliant with typescript usage
+- Upgrade dependencies
+- CI: Use MegaLinter javascript flavor for better performance
+
+## [4.3.2] 2025-01-24
+
+- Upgrade dependencies
+- Refactor workflows to use OIDC (npm Trusted Publishers) to publish package
+
+## [4.3.1] 2025-12-04
+
+- Upgrade njre dependency
+- CI: avoid jobs in double
+
+## [4.3.0] 2025-12-03
+
+- Add tests for Node 24 & Java 25
+- CI: Upgrade MegaLinter to v9
+- CI: Remove CircleCI
+- Upgrade dependencies
+
+## [4.2.1] 2025-05-25
+
+- Fix to allow absolute path to JAR file
+- Upgrade dependencies
+
+## [4.2.0] 2025-02-23
+
+- Upgrade to njre v1.4.2
+- Upgrade dependencies
+
 ## [4.1.1] 2024-08-30
 
 - Upgrade to njre v1.4.0

@@ -3,6 +3,7 @@
 const { JavaCaller } = require('../lib/index');
 const os = require("os");
 const which = require("which");
+const path = require('path');
 
 const {
     beforeEachTestCase,
@@ -187,7 +188,19 @@ describe("Call with classes", () => {
         await javaCli.process();
     });
 
-    it("should terminate once timeout is reached", async () => {
+    it("Should work with an absolute path", async () => {
+        const absolutePath = path.join(process.cwd(), "test/java/jar/JavaCallerTesterRunnable.jar");
+
+        const java = new JavaCaller({
+            jar: absolutePath,
+        });
+        const { status, stdout, stderr } = await java.run();
+
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
+        it("should terminate once timeout is reached", async () => {
         const java = new JavaCaller({
             classPath: 'test/java/dist',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
