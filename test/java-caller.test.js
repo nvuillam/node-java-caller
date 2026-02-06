@@ -200,7 +200,7 @@ describe("Call with classes", () => {
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
     });
 
-        it("should terminate once timeout is reached", async () => {
+    it("should terminate once timeout is reached", async () => {
         const java = new JavaCaller({
             classPath: 'test/java/dist',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
