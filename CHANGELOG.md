@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Add `timeout` and `killSignal` run options
+
 ## [4.3.3] 2025-02-03
 
 - Add types definition to make library compliant with typescript usage

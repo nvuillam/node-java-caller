@@ -117,6 +117,20 @@ export interface JavaCallerRunOptions {
      * @default false
      */
     windowless?: boolean;
+
+    /**
+     * The number of milliseconds to wait before the Java process will time out. When this occurs,
+     * killSignal will ben
+     * @default undefined
+     */
+    timeout?: number;
+
+    /**
+     * If windowless is true, JavaCaller calls javaw instead of java to not create any windows,
+     * useful when using detached on Windows. Ignored on Unix.
+     * @default "SIGTERM"
+     */
+    killSignal?: number | NodeJS.Signals;
 }
 
 /**

@@ -65,13 +65,15 @@ Example: `["-Xms256m", "--someflagwithvalue myVal", "-c"]`
 
 | Parameter | Description | Default | Example |
 |-----------|-------------|---------|---------|
-| [detached](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | If set to true, node will node wait for the java command to be completed.<br/>In that case, `childJavaProcess` property will be returned, but `stdout` and `stderr` may be empty, except if an error is triggered at command execution | `false` | `true`
+| [detached](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | If set to true, node will not wait for the java command to be completed.<br/>In that case, `childJavaProcess` property will be returned, but `stdout` and `stderr` may be empty, except if an error is triggered at command execution | `false` | `true`
 | [stdoutEncoding](https://nodejs.org/api/stream.html#readablesetencodingencoding) | Adds control on spawn process stdout | `utf8` | `ucs2` |
 | waitForErrorMs | If detached is true, number of milliseconds to wait to detect an error before exiting JavaCaller run   | `500` | `2000` |
 | [cwd](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | You can override cwd of spawn called by JavaCaller runner | `process.cwd()` | `some/other/cwd/folder` |
 | javaArgs | List of arguments for JVM only, not the JAR or the class | `[]` | `['--add-opens=java.base/java.lang=ALL-UNNAMED']` |
 | [windowsVerbatimArguments](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to true automatically when shell is specified and is CMD. | `true` | `false` |
 | [windowless](https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#:~:text=main()%20method.-,javaw,information%20if%20a%20launch%20fails.) | If windowless is true, JavaCaller calls javaw instead of java to not create any windows, useful when using detached on Windows. Ignored on Unix. | false | true
+| [timeout](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | In milliseconds the maximum amount of time the process is allowed to run. | `undefined` | `1000`
+| [killSignal](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | The signal value to be used when the spawned process will be killed by timeout or abort signal. | `SIGTERM` | `SIGINT`
 
 ## Examples
 

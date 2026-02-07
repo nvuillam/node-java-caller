@@ -34,7 +34,8 @@ module.exports = {
       files: ["**/*.d.ts"],
       parser: "@typescript-eslint/parser",
       rules: {
-        "getter-return": "off"
+        "getter-return": "off",
+        "no-undef": "off"
       }
     }
   ],
