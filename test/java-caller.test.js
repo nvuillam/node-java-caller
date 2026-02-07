@@ -58,6 +58,36 @@ describe("Call with classes", () => {
         checkStatus(0, status, stdout, stderr);
     });
 
+    it("should call JavaCallerTester.class with windowsHide set to false", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run([], { windowsHide: false });
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
+    it("should call JavaCallerTester.class with windowsHide set to true (default)", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run([], { windowsHide: true });
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
+    it("should call JavaCallerTester.class with default windowsHide (should be true)", async () => {
+        const java = new JavaCaller({
+            classPath: 'test/java/dist',
+            mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+        });
+        const { status, stdout, stderr } = await java.run([]);
+        checkStatus(0, status, stdout, stderr);
+        checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
 
     it("should call JavaCallerTester.class with proper stdout encoding", async () => {
         const java = new JavaCaller({
@@ -186,6 +216,23 @@ describe("Call with classes", () => {
     it("should use JavaCallerCli", async () => {
         const javaCli = new JavaCallerCli("examples/cli_app/lib");
         await javaCli.process();
+    });
+
+    it("should use JavaCallerCli with --no-windows-hide flag", async () => {
+        // Save original argv
+        const originalArgv = process.argv;
+        
+        // Mock process.argv to include --no-windows-hide
+        process.argv = ['node', 'script.js', '--no-windows-hide'];
+        
+        try {
+            const javaCli = new JavaCallerCli("examples/cli_app/lib");
+            await javaCli.process();
+            checkStatus(0, process.exitCode);
+        } finally {
+            // Restore original argv
+            process.argv = originalArgv;
+        }
     });
 
     it("Should work with an absolute path", async () => {

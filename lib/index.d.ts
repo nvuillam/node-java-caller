@@ -131,6 +131,13 @@ export interface JavaCallerRunOptions {
      * @default "SIGTERM"
      */
     killSignal?: number | NodeJS.Signals;
+    
+    /**
+     * On Windows, hide the subprocess console window that would normally be created.
+     * This option is ignored on Unix.
+     * @default true
+     */
+    windowsHide?: boolean;
 }
 
 /**
