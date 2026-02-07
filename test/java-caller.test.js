@@ -68,7 +68,7 @@ describe("Call with classes", () => {
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
     });
 
-    it("should call JavaCallerTester.class with windowsHide set to true (default)", async () => {
+    it("should call JavaCallerTester.class with windowsHide explicitly set to true", async () => {
         const java = new JavaCaller({
             classPath: 'test/java/dist',
             mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
