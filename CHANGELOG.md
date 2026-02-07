@@ -2,7 +2,10 @@
 
 ## Unreleased
 
+## [4.4.0] 2025-02-07
+
 - Add `timeout` and `killSignal` run options
+- Add `windowsHide` (default: true) to allow to show window if `windowHide: true` is sent
 
 ## [4.3.3] 2025-02-03
 
