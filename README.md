@@ -72,6 +72,7 @@ Example: `["-Xms256m", "--someflagwithvalue myVal", "-c"]`
 | javaArgs | List of arguments for JVM only, not the JAR or the class | `[]` | `['--add-opens=java.base/java.lang=ALL-UNNAMED']` |
 | [windowsVerbatimArguments](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | No quoting or escaping of arguments is done on Windows. Ignored on Unix. This is set to true automatically when shell is specified and is CMD. | `true` | `false` |
 | [windowless](https://docs.oracle.com/en/java/javase/17/docs/specs/man/java.html#:~:text=main()%20method.-,javaw,information%20if%20a%20launch%20fails.) | If windowless is true, JavaCaller calls javaw instead of java to not create any windows, useful when using detached on Windows. Ignored on Unix. | false | true
+| [windowsHide](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | On Windows, hide the subprocess console window that would normally be created. Set to `false` if you need Java UI dialogs to be visible (e.g., print dialogs). Ignored on Unix. | `true` | `false`
 | [timeout](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | In milliseconds the maximum amount of time the process is allowed to run. | `undefined` | `1000`
 | [killSignal](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) | The signal value to be used when the spawned process will be killed by timeout or abort signal. | `SIGTERM` | `SIGINT`
 
@@ -147,6 +148,23 @@ const java = new JavaCaller({
     mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
 });
 const { status, stdout, stderr } = await java.run(['--sleep'], { windowless: true });
+```
+
+Call java process with visible windows (e.g., for print dialogs)
+
+```javascript
+const java = new JavaCaller({
+    classPath: 'test/java/dist',
+    mainClass: 'com.nvuillam.javacaller.JavaCallerTester'
+});
+// Set windowsHide to false to allow Java UI dialogs to be visible
+const { status, stdout, stderr } = await java.run([], { windowsHide: false });
+```
+
+When using CLI mode with `--no-windows-hide` flag:
+
+```bash
+node index.js --no-windows-hide
 ```
 
 You can see **more examples in** [**test methods**](https://github.com/nvuillam/node-java-caller/blob/master/test/java-caller.test.js)
