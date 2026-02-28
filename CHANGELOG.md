@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [4.4.1] 2025-02-28
+
+- Upgrade dependencies
+
 ## [4.4.0] 2025-02-07
 
 - Add `timeout` and `killSignal` run options
