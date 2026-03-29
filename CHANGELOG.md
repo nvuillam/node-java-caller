@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+## [4.4.2] 2025-03-29
+
+- Upgrade dependencies
+
 ## [4.4.1] 2025-02-28
 
 - Upgrade dependencies
