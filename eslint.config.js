@@ -23,7 +23,10 @@ module.exports = [
         globalThis: "readonly",
         describe: true,
         it: true,
+        before: true,
+        after: true,
         beforeEach: true,
+        afterEach: true,
       },
     },
     rules: {
