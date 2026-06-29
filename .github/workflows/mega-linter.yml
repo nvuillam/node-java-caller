@@ -24,13 +24,14 @@ jobs:
     steps:
       # Git Checkout
       - name: Checkout Code
-        uses: actions/checkout@v6
+        uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
           fetch-depth: 0
+          persist-credentials: false
 
       # Mega-Linter
       - name: Mega-Linter
-        uses: oxsecurity/megalinter/flavors/javascript@v9
+        uses: oxsecurity/megalinter/flavors/javascript@ef3e84b8b836d76db562d0f3ed7da61e8fd538bc # v9
         env:
           # All available variables are described in documentation
           # https://github.com/oxsecurity/megalinter#configuration
@@ -42,7 +43,7 @@ jobs:
       # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section
       - name: Archive production artifacts
         if: success() || failure()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7
         with:
           name: Mega-Linter reports
           path: |
