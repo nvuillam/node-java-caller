@@ -22,7 +22,7 @@ async function runExample() {
         classPath: 'java/JavaCallerTester.jar', // CLASSPATH referencing the package embedded jar files
         mainClass: 'com.nvuillam.javacaller.JavaCallerTester',// Main class to call, must be available from CLASSPATH,
         rootPath: __dirname,
-        minimumJavaVersion: 10
+        minimumJavaVersion: 11
     });
     const { status, stdout, stderr } = await java.run(['-a', 'list', '--of', 'arguments']);
 

@@ -14,8 +14,8 @@
 
 Lightweight cross-platform javascript module to **easily call java commands from Node.js sources**.
 
-- **Automatically installs required Java version** if not present on the system
-- Compliant with **JDK & JRE** from **8 to 21**
+- **Automatically installs required Java version** if not present on the system, using [Adoptium / Eclipse Temurin](https://adoptium.net/) (via [njre](https://www.npmjs.com/package/njre))
+- Compliant with **JDK & JRE** for the versions Adoptium publishes: LTS **8, 11, 17, 21** plus current feature releases. Non-LTS versions that only ever shipped on the retired AdoptOpenJDK (e.g. 10, 14) are no longer auto-installable
 - Uses node [spawn](https://nodejs.org/api/child_process.html#child_process_child_process_spawn_command_args_options) method to perform the call
 
 There are two ways to use java-caller:
@@ -47,7 +47,7 @@ const {status, stdout, stderr} = await java.run(JAVA_ARGUMENTS,JAVA_CALLER_RUN_O
 | mainClass             | If classPath set, main class to call                                                                                                                                                                           |                      | `"com.example.MyClass"`                  |
 | rootPath              | If classPath elements are not relative to the current folder, you can define a root path. <br/> You may use `__dirname` if you classes / jars are in your module folder                                        | `.` (current folder) | `"/home/my/folder/containing/jars"`      |
 | minimumJavaVersion    | Minimum java version to be used to call java command.<br/> If the java version found on machine is lower, java-caller will try to install and use the appropriate one                                          | `8`                  | `11`                                     |
-| maximumJavaVersion    | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one <br/> Can be equal to minimumJavaVersion |                      | `10`                                     |
+| maximumJavaVersion    | Maximum java version to be used to call java command.<br/> If the java version found on machine is upper, java-caller will try to install and use the appropriate one <br/> Can be equal to minimumJavaVersion |                      | `17`                                     |
 | javaType              | jre or jdk (if not defined and installation is required, jre will be installed)                                                                                                                                |                      | `"jre"`                                  |
 | additionalJavaArgs    | Additional parameters for JVM that will be added in every JavaCaller instance runs                                                                                                                             |                      | `["-Xms256m","-Xmx2048m"]`               |
 | javaExecutable        | You can force to use a defined java executable, instead of letting java-caller find/install one. Can also be defined with env var `JAVA_CALLER_JAVA_EXECUTABLE`                                                |                      | `"/home/some-java-version/bin/java.exe"` |

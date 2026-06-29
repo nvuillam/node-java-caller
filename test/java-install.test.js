@@ -10,9 +10,12 @@ const {
     checkStdOutIncludesOneOf,
 } = require("./helpers/common");
 
+// Only Adoptium/Temurin-available versions: LTS 8/11/17/21 + current feature
+// releases (20, 25). Non-LTS versions Adoptium never published (e.g. 10, 14)
+// are no longer auto-installable since AdoptOpenJDK retired.
 const javaVersionsToTest = os.platform() === "darwin"
-    ? [11, 17, 20, 21]
-    : [8, 11, 14, 17, 20, 21];
+    ? [11, 17, 20, 21, 25]
+    : [8, 11, 17, 20, 21, 25];
 const javaTypesToTest = ['jre', 'jdk'];
 
 describe("Test all installs", () => {
