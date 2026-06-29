@@ -163,7 +163,7 @@ describe("Call with classes", () => {
         let javaPath;
         try {
             javaPath = which.sync("java");
-        } catch (e) {
+        } catch {
             console.log("Java not found: ignore test method");
         }
         if (javaPath) {
