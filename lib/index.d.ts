@@ -1,4 +1,3 @@
-
 /* eslint-disable no-unused-vars */
 /// <reference types="node" />
 
@@ -10,59 +9,59 @@ export interface JavaCallerOptions {
      * Path to executable jar file
      */
     jar?: string;
-    
+
     /**
      * If jar parameter is not set, classpath to use.
      * Use : as separator (it will be converted if run on Windows), or use a string array.
      */
     classPath?: string | string[];
-    
+
     /**
      * Set to true if classpaths should not be based on the rootPath
      */
     useAbsoluteClassPaths?: boolean;
-    
+
     /**
      * If classPath set, main class to call
      */
     mainClass?: string;
-    
+
     /**
      * Minimum java version to be used to call java command.
      * If the java version found on machine is lower, java-caller will try to install and use the appropriate one
      * @default 8 (11 on macOS)
      */
     minimumJavaVersion?: number;
-    
+
     /**
      * Maximum java version to be used to call java command.
      * If the java version found on machine is upper, java-caller will try to install and use the appropriate one
      */
     maximumJavaVersion?: number;
-    
+
     /**
      * jre or jdk (if not defined and installation is required, jre will be installed)
      */
     javaType?: "jre" | "jdk";
-    
+
     /**
      * If classPath elements are not relative to the current folder, you can define a root path.
      * You may use __dirname if you classes / jars are in your module folder
      * @default "." (current folder)
      */
     rootPath?: string;
-    
+
     /**
      * You can force to use a defined java executable, instead of letting java-caller find/install one.
      * Can also be defined with env var JAVA_CALLER_JAVA_EXECUTABLE
      */
     javaExecutable?: string;
-    
+
     /**
      * Additional parameters for JVM that will be added in every JavaCaller instance runs
      */
     additionalJavaArgs?: string[];
-    
+
     /**
      * Output mode: "none" or "console"
      * @default "none"
@@ -80,37 +79,37 @@ export interface JavaCallerRunOptions {
      * @default false
      */
     detached?: boolean;
-    
+
     /**
      * Adds control on spawn process stdout
      * @default "utf8"
      */
     stdoutEncoding?: string;
-    
+
     /**
      * If detached is true, number of milliseconds to wait to detect an error before exiting JavaCaller run
      * @default 500
      */
     waitForErrorMs?: number;
-    
+
     /**
      * You can override cwd of spawn called by JavaCaller runner
      * @default process.cwd()
      */
     cwd?: string;
-    
+
     /**
      * List of arguments for JVM only, not the JAR or the class
      */
     javaArgs?: string[];
-    
+
     /**
      * No quoting or escaping of arguments is done on Windows. Ignored on Unix.
      * This is set to true automatically when shell is specified and is CMD.
      * @default true
      */
     windowsVerbatimArguments?: boolean;
-    
+
     /**
      * If windowless is true, JavaCaller calls javaw instead of java to not create any windows,
      * useful when using detached on Windows. Ignored on Unix.
@@ -131,7 +130,7 @@ export interface JavaCallerRunOptions {
      * @default "SIGTERM"
      */
     killSignal?: number | NodeJS.Signals;
-    
+
     /**
      * On Windows, hide the subprocess console window that would normally be created.
      * This option is ignored on Unix.
@@ -148,21 +147,21 @@ export interface JavaCallerResult {
      * Exit status code of the java command
      */
     status: number | null;
-    
+
     /**
      * Standard output of the java command
      */
     stdout: string;
-    
+
     /**
      * Standard error output of the java command
      */
     stderr: string;
-    
+
     /**
      * Child process object (useful when detached is true)
      */
-    childJavaProcess?: import('child_process').ChildProcess;
+    childJavaProcess?: import("child_process").ChildProcess;
 }
 
 /**
@@ -189,13 +188,13 @@ export class JavaCaller {
     javaExecutableFromNodeJavaCaller?: string | null;
     prevPath?: string;
     prevJavaHome?: string;
-    
+
     /**
      * Creates a JavaCaller instance
      * @param opts - Run options
      */
     constructor(opts: JavaCallerOptions);
-    
+
     /**
      * Runs java command of a JavaCaller instance
      * @param userArguments - Java command line arguments
@@ -210,13 +209,13 @@ export class JavaCaller {
  */
 export class JavaCallerCli {
     javaCallerOptions: JavaCallerOptions;
-    
+
     /**
      * Creates a JavaCallerCli instance
      * @param baseDir - Base directory containing java-caller-config.json
      */
     constructor(baseDir: string);
-    
+
     /**
      * Process command line arguments and run java command
      */

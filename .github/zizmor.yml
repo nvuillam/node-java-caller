@@ -1,0 +1,11 @@
+# zizmor configuration (https://docs.zizmor.sh/configuration/)
+# Scoped, documented ignore for a low-confidence false positive.
+rules:
+  cache-poisoning:
+    ignore:
+      # The setup-node steps in the npm publish jobs declare no `cache:` input
+      # (setup-node does not cache by default), so there is no cache to poison.
+      # Publish integrity is guaranteed by npm provenance (--provenance) using
+      # OIDC (id-token: write), independent of any dependency cache.
+      - deploy.yml:34
+      - deploy.yml:64

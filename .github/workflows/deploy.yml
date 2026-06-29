@@ -1,5 +1,5 @@
 ---
-name: 'Build & Deploy'
+name: "Build & Deploy"
 
 on:
   push:
@@ -9,9 +9,9 @@ on:
     types:
       - released
 
+# Least-privilege at the top level; the publish jobs elevate id-token for npm provenance (OIDC)
 permissions:
   contents: read
-  id-token: write
 
 concurrency:
   group: ${{ github.ref_name }}-${{ github.workflow }}
@@ -22,14 +22,19 @@ jobs:
     name: Deploy to NPM (beta)
     if: github.event_name == 'push'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm provenance (OIDC)
     environment:
       name: release
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
-          node-version: '24.x'
-          registry-url: 'https://registry.npmjs.org'
+          persist-credentials: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
           scope: nvuillam
       - run: npm ci
       - run: |
@@ -47,14 +52,19 @@ jobs:
     name: Deploy to NPM (release)
     if: github.event_name == 'release'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm provenance (OIDC)
     environment:
       name: release
     steps:
-      - uses: actions/checkout@v6
-      - uses: actions/setup-node@v6
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6
         with:
-          node-version: '24.x'
-          registry-url: 'https://registry.npmjs.org'
+          persist-credentials: false
+      - uses: actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6
+        with:
+          node-version: "24.x"
+          registry-url: "https://registry.npmjs.org"
           scope: nvuillam
       - run: npm ci
       - run: |
