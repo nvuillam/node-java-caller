@@ -40,7 +40,7 @@
   "dependencies": {
     "debug": "^4.3.4",
     "fs-extra": "^11.1.1",
-    "njre": "^1.5.4",
+    "njre": "^2.0.0",
     "semver": "^7.5.4"
   },
   "devDependencies": {
