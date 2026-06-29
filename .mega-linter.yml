@@ -1,9 +1,17 @@
 DISABLE_LINTERS:
   - TYPESCRIPT_STANDARD
   - TYPESCRIPT_PRETTIER
+  # The only .ts file (lib/index.d.ts) is a hand-maintained declaration file.
+  # It is covered by prettier (TYPESCRIPT_DEFAULT_STYLE) and the project's
+  # eslint flat config intentionally ignores .d.ts, so TYPESCRIPT_ES has no
+  # applicable config/parser for it.
+  - TYPESCRIPT_ES
 TYPESCRIPT_STANDARD_DISABLE_ERRORS: true
 DISABLE_ERRORS_LINTERS:
   - ACTION_ACTIONLINT
   - SPELL_LYCHEE
 FILTER_REGEX_EXCLUDE: (docs\/github-dependents-info\.md|package-lock\.json)
 TYPESCRIPT_DEFAULT_STYLE: prettier
+# zizmor needs the GitHub API; whitelist GITHUB_TOKEN so it can authenticate
+# (the mega-linter workflow passes GITHUB_TOKEN into the action env).
+ACTION_ZIZMOR_UNSECURED_ENV_VARIABLES: [GITHUB_TOKEN]
