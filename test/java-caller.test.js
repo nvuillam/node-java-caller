@@ -13,7 +13,11 @@ const {
 } = require("./helpers/common");
 const { JavaCallerCli } = require('../lib/cli');
 
-describe("Call with classes", () => {
+describe("Call with classes", function () {
+    // [INSTR] temporary diagnostic — shorter timeout so the Windows+Node24 leg
+    // fails fast and completes within the job budget instead of being killed at
+    // 15 min, letting the [INSTR] event traces flush. Remove with instrumentation.
+    this.timeout(40000);
     beforeEach(beforeEachTestCase);
 
     it("should call JavaCallerTester.class attached", async () => {
