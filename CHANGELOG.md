@@ -2,6 +2,11 @@
 
 ## Unreleased
 
+- **Breaking**: Upgrade `njre` to v2.0.0: auto-installed JDK/JRE now comes from Eclipse Temurin (`api.adoptium.net`) instead of the deprecated AdoptOpenJDK endpoint (which hung under Node 24)
+- Fix `run()` and `java -version` detection hanging on Node 24 + Windows
+- Fix Java 8 (legacy `1.8.0_xxx` version scheme) being wrongly rejected by `minimumJavaVersion`/`maximumJavaVersion`
+- Upgrade dependencies and CI/tooling
+
 ## [4.4.2] 2025-03-29
 
 - Upgrade dependencies
