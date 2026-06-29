@@ -1,12 +1,12 @@
 {
-    "tabWidth": 2,
-    "overrides": [
-        {
-            "files": "lib/**/*.{js,jsx,ts}",
-            "options": {
-                "tabWidth": 4,
-                "printWidth": 150
-            }
-        }
-    ]
+  "tabWidth": 2,
+  "overrides": [
+    {
+      "files": "lib/**/*.{js,jsx,ts}",
+      "options": {
+        "tabWidth": 4,
+        "printWidth": 150
+      }
+    }
+  ]
 }

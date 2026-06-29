@@ -1,43 +1,33 @@
 const js = require("@eslint/js");
 const globals = require("globals");
-const babelParser = require("@babel/eslint-parser");
 
-// Flat config (ESLint 9+). Faithful translation of the previous .eslintrc.js.
+// Flat config (ESLint 9+). Plain Node ES2021 sources; default espree parser.
 module.exports = [
-    {
-        // TypeScript declaration files are not linted by this JS config
-        // (the project's lint script only targets *.js). MegaLinter's
-        // TYPESCRIPT_ES handles .d.ts separately.
-        ignores: ["**/*.d.ts"],
+  {
+    // TypeScript declaration files are hand-maintained and covered by
+    // prettier; eslint's JS rules don't apply to .d.ts.
+    // coverage/ and node_modules/ are generated/vendored and not linted.
+    ignores: ["**/*.d.ts", "coverage/**", "node_modules/**"],
+  },
+  js.configs.recommended,
+  {
+    files: ["**/*.js", "**/*.jsx"],
+    languageOptions: {
+      ecmaVersion: 2022,
+      sourceType: "commonjs",
+      globals: {
+        ...globals.browser,
+        ...globals.node,
+        Atomics: "readonly",
+        SharedArrayBuffer: "readonly",
+        globalThis: "readonly",
+        describe: true,
+        it: true,
+        beforeEach: true,
+      },
     },
-    js.configs.recommended,
-    {
-        files: ["**/*.js", "**/*.jsx"],
-        languageOptions: {
-            ecmaVersion: 2018,
-            sourceType: "module",
-            parser: babelParser,
-            parserOptions: {
-                requireConfigFile: false,
-                babelOptions: {
-                    parserOpts: {
-                        plugins: ["typescript"],
-                    },
-                },
-            },
-            globals: {
-                ...globals.browser,
-                ...globals.node,
-                Atomics: "readonly",
-                SharedArrayBuffer: "readonly",
-                globalThis: "readonly",
-                describe: true,
-                it: true,
-                beforeEach: true,
-            },
-        },
-        rules: {
-            indent: "off", // Managed by prettier
-        },
+    rules: {
+      indent: "off", // Managed by prettier
     },
+  },
 ];
