@@ -10,7 +10,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ```shell
 npm run test                  # Run all mocha tests (timeout 300000ms; CI sets DEBUG=java-caller,njre)
-npm run test:coverage         # Same, under nyc coverage (reports to coverage/, include is lib/**)
 npm run test:debug            # Tests with DEBUG=java-caller enabled
 npm run lint:fix              # eslint --fix on **/*.js, then prettier on lib (tab-width 4, print-width 150)
 
@@ -56,5 +55,5 @@ Three modules in `lib/`, re-exported from `index.js`:
 
 - Tests are mocha + `node:assert`, with shared helpers in `test/helpers/common.js` (`checkStatus`, `checkStdOutIncludes`, etc.) and per-run init in `test/helpers/init.js` (loaded via the `mocha.require` config in `package.json`).
 - `test/java-install.test.js` exercises the real `njre` download/install path, which is why the mocha timeout is 5 minutes.
-- CI (`.github/workflows/test.yml`) runs the matrix Node 18/20/24 × Java 8/11/17/21/25 × ubuntu/macos/windows, plus a no-Java coverage job that uploads to Codecov.
+- CI (`.github/workflows/test.yml`) runs the matrix Node 18/20/24 × Java 8/11/17/21/25 × ubuntu/macos/windows, plus a no-Java job (`Test - No Java`) that runs the suite in a container without a system JDK.
 - macOS defaults `minimumJavaVersion` to 11 (no Java 8 there); keep that branch intact.

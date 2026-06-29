@@ -31,7 +31,6 @@
     "circleci",
     "classpath",
     "classpaths",
-    "codecov",
     "customarg",
     "cvfm",
     "danunafig",
@@ -41,7 +40,6 @@
     "javac",
     "javacaller",
     "javaw",
-    "lcov",
     "lycheeignore",
     "markdownfile",
     "markdownlint",
@@ -64,7 +62,6 @@
     "someflagwithvalue",
     "temurin",
     "unhack",
-    "unittests",
     "zizmor"
   ]
 }
