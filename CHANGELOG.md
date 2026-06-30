@@ -2,31 +2,33 @@
 
 ## Unreleased
 
+## [5.0.0] 2026-06-30
+
 - **Breaking**: Upgrade `njre` to v2.0.0: auto-installed JDK/JRE now comes from Eclipse Temurin (`api.adoptium.net`) instead of the deprecated AdoptOpenJDK endpoint (which hung under Node 24)
 - Fix `run()` and `java -version` detection hanging on Node 24 + Windows
 - Fix Java 8 (legacy `1.8.0_xxx` version scheme) being wrongly rejected by `minimumJavaVersion`/`maximumJavaVersion`
 - Upgrade dependencies and CI/tooling
 
-## [4.4.2] 2025-03-29
+## [4.4.2] 2026-03-29
 
 - Upgrade dependencies
 
-## [4.4.1] 2025-02-28
+## [4.4.1] 2026-02-28
 
 - Upgrade dependencies
 
-## [4.4.0] 2025-02-07
+## [4.4.0] 2026-02-07
 
 - Add `timeout` and `killSignal` run options
 - Add `windowsHide` (default: true) to allow to show window if `windowHide: true` is sent
 
-## [4.3.3] 2025-02-03
+## [4.3.3] 2026-02-03
 
 - Add types definition to make library compliant with typescript usage
 - Upgrade dependencies
 - CI: Use MegaLinter javascript flavor for better performance
 
-## [4.3.2] 2025-01-24
+## [4.3.2] 2026-01-24
 
 - Upgrade dependencies
 - Refactor workflows to use OIDC (npm Trusted Publishers) to publish package
