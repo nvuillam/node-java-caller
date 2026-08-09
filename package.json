@@ -13,7 +13,7 @@
     "java:compile": "javac -d test/java/dist --release 8 test/java/src/com/nvuillam/javacaller/JavaCallerTester.java",
     "java:jar": "cd test/java/dist && jar -cvfm ./../jar/JavaCallerTester.jar ./../jar/manifest/Manifest.txt com/nvuillam/javacaller/*.class && jar -cvfm ./../jar/JavaCallerTesterRunnable.jar ./../jar/manifest-runnable/Manifest.txt com/nvuillam/javacaller/*.class",
     "test": "mocha \"test/**/*.test.js\"",
-    "test:debug": "env DEBUG=java-caller mocha --reporter spec \"test/**/*.test.js\""
+    "test:debug": "env NODE_DEBUG=java-caller mocha --reporter spec \"test/**/*.test.js\""
   },
   "repository": {
     "type": "git",

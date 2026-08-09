@@ -2,11 +2,9 @@
 "use strict";
 
 console.log("npm run test initialized");
-// Activate debug log if we are in debug mode
-const debug = typeof v8debug === "object" || /--debug|--inspect|--inspect-brk/.test(process.execArgv.join(" "));
-if (debug && !(process.env.DEBUG || "").includes("java-caller")) {
-    process.env.DEBUG = process.env.DEBUG ? `${process.env.DEBUG},java-caller` : "java-caller";
-}
+// Traces can no longer be enabled from here: util.debuglog only reads NODE_DEBUG from the
+// environment the process was launched with. Run `npm run test:debug`, or launch your
+// debugger with NODE_DEBUG=java-caller set.
 
 // Reinitialize cache
 globalThis.JAVA_CALLER_VERSIONS_CACHE = null;

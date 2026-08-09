@@ -68,7 +68,7 @@ jobs:
         run: npm ci
       - name: Run tests
         env:
-          DEBUG: java-caller,njre
+          NODE_DEBUG: java-caller
         run: npm run test
 
   test-no-java:
@@ -91,5 +91,5 @@ jobs:
         run: npm ci
       - name: Run tests
         env:
-          DEBUG: "java-caller"
+          NODE_DEBUG: "java-caller"
         run: npm run test

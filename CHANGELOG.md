@@ -2,6 +2,12 @@
 
 ## Unreleased
 
+- **Breaking**: Debug traces are now activated with `NODE_DEBUG=java-caller` instead of `DEBUG=java-caller`. The `debug` package has been replaced by Node's built-in `util.debuglog`, which only reads `NODE_DEBUG` from the environment the process is launched with (setting `process.env.NODE_DEBUG` at runtime no longer enables traces). The output format changes accordingly, from `java-caller <message> +1ms` to `JAVA-CALLER <pid>: <message>`.
+- **Breaking**: Minimum supported Node.js version is now 18 (`engines` previously declared `>=12`, while `njre` v3 already required `>=18`)
+- Reduce runtime dependencies from 17 packages to 10: remove `fs-extra` (replaced by `node:fs`) and `debug` (replaced by `node:util`), and upgrade `yauzl` so it no longer pulls `buffer-crc32`. Only `njre` and `semver` remain as direct dependencies.
+- Remove the `which` dev dependency, whose `engines` excluded the Node versions tested in CI
+- Fix `npm run lint`, broken since the ESLint v10 upgrade: `@eslint/js` and `globals` are required by `eslint.config.js` but were no longer installed transitively. They are now explicit dev dependencies, and CI runs `npm run lint` so the script cannot silently break again.
+
 ## [5.0.0] 2026-06-30
 
 - **Breaking**: Upgrade `njre` to v2.0.0: auto-installed JDK/JRE now comes from Eclipse Temurin (`api.adoptium.net`) instead of the deprecated AdoptOpenJDK endpoint (which hung under Node 24)

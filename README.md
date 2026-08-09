@@ -170,13 +170,15 @@ You can see **more examples in** [**test methods**](https://github.com/nvuillam/
 
 ## TROUBLESHOOTING
 
-Set environment variable `DEBUG=java-caller` before calling your code using java-caller module, and you will see the java commands executed.
+Set environment variable `NODE_DEBUG=java-caller` before calling your code using java-caller module, and you will see the java commands executed.
+
+> Since v6.0.0 traces use Node's built-in [`util.debuglog`](https://nodejs.org/api/util.html#utildebuglogsection-callback) instead of the `debug` package, so the variable is `NODE_DEBUG` and not `DEBUG` anymore. It must be set in the environment the process is launched with: setting `process.env.NODE_DEBUG` at runtime has no effect.
 
 Example debug log:
 
 ```shell
-java-caller Found Java version 1.80131 +1s
-java-caller Java command: java -Xms256m -Xmx2048m -cp C:\Work\gitPerso\node-java-caller\test\java\dist com.nvuillam.javacaller.JavaCallerTester -customarg nico +1ms
+JAVA-CALLER 12345: Found Java version 1.80131
+JAVA-CALLER 12345: Java command: java -Xms256m -Xmx2048m -cp C:\Work\gitPerso\node-java-caller\test\java\dist com.nvuillam.javacaller.JavaCallerTester -customarg nico
 ```
 
 ## CONTRIBUTE
