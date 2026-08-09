@@ -13,7 +13,8 @@ TYPESCRIPT_STANDARD_DISABLE_ERRORS: true
 DISABLE_ERRORS_LINTERS:
   - ACTION_ACTIONLINT
   - SPELL_LYCHEE
-FILTER_REGEX_EXCLUDE: (docs\/github-dependents-info\.md|package-lock\.json)
+# .claude/ holds vendored agent skills (MegaLinter, pr-watch-fix) maintained upstream
+FILTER_REGEX_EXCLUDE: (docs\/github-dependents-info\.md|package-lock\.json|\.claude\/)
 TYPESCRIPT_DEFAULT_STYLE: prettier
 # zizmor needs the GitHub API; whitelist GITHUB_TOKEN so it can authenticate
 # (the mega-linter workflow passes GITHUB_TOKEN into the action env).
