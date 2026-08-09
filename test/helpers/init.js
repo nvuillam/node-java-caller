@@ -4,8 +4,8 @@
 console.log("npm run test initialized");
 // Activate debug log if we are in debug mode
 const debug = typeof v8debug === "object" || /--debug|--inspect|--inspect-brk/.test(process.execArgv.join(" "));
-if (debug) {
-    require("debug").enable("java-caller");
+if (debug && !(process.env.DEBUG || "").includes("java-caller")) {
+    process.env.DEBUG = process.env.DEBUG ? `${process.env.DEBUG},java-caller` : "java-caller";
 }
 
 // Reinitialize cache

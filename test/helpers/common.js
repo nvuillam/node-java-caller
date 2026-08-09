@@ -1,5 +1,22 @@
 #! /usr/bin/env node
 const assert = require("assert");
+const fs = require("fs");
+const os = require("os");
+const path = require("path");
+
+// Locate an executable in PATH, honoring PATHEXT on Windows. Returns null when not found.
+function findInPath(command) {
+    const extensions = os.platform() === "win32" ? (process.env.PATHEXT || ".EXE").split(path.delimiter) : [""];
+    for (const dir of (process.env.PATH || "").split(path.delimiter).filter(Boolean)) {
+        for (const extension of extensions) {
+            const candidate = path.join(dir, command + extension);
+            if (fs.existsSync(candidate) && fs.statSync(candidate).isFile()) {
+                return candidate;
+            }
+        }
+    }
+    return null;
+}
 
 // Reset codeNarcCallsCounter before each test
 const beforeEachTestCase = function () {
@@ -26,6 +43,7 @@ function checkStdErrIncludes(textToCheck, stdout, stderr) {
 
 module.exports = {
     beforeEachTestCase,
+    findInPath,
     checkStatus,
     checkStdOutIncludes,
     checkStdOutIncludesOneOf,

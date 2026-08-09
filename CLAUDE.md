@@ -50,10 +50,11 @@ Three modules in `lib/`, re-exported from `index.js`:
 - **Java-version resolution is cached on `globalThis.JAVA_CALLER_VERSIONS_CACHE`** to avoid repeated lookups across instances in one process. Tests reset this in `test/helpers/init.js`; if you add caching state, reset it there too.
 - **Platform branching** lives in `getPlatformBinPath()` (darwin = `Contents/Home/bin`) and several `os.platform() === "win32"` checks. Windows also handles arg quoting (`windowsVerbatimArguments`), `javaw` for windowless, and `windowsHide`. Any new behavior must be validated on win32/darwin/linux.
 - **`classPath`** accepts a string (split on `:`, converted to the OS delimiter) or a string array; resolved against `rootPath` unless `useAbsoluteClassPaths` is set.
+- **Runtime dependencies are deliberately minimal** (`njre` + `semver` only): prefer `node:` built-ins over adding a package. The `debug()` helper at the top of `java-caller.js` is a local ~10-line replacement for the `debug` package and keeps the documented `DEBUG=java-caller` contract — `util.debuglog` can't, since it only reads `NODE_DEBUG` from the launch environment.
 
 ## Testing notes
 
 - Tests are mocha + `node:assert`, with shared helpers in `test/helpers/common.js` (`checkStatus`, `checkStdOutIncludes`, etc.) and per-run init in `test/helpers/init.js` (loaded via the `mocha.require` config in `package.json`).
 - `test/java-install.test.js` exercises the real `njre` download/install path, which is why the mocha timeout is 5 minutes.
-- CI (`.github/workflows/test.yml`) runs the matrix Node 18/20/24 × Java 8/11/17/21/25 × ubuntu/macos/windows, plus a no-Java job (`Test - No Java`) that runs the suite in a container without a system JDK.
+- CI (`.github/workflows/test.yml`) runs the matrix Node 18/20/24 × Java 8/11/17/21/25 × ubuntu/macos/windows, plus a no-Java job (`Test - No Java`) that runs the suite in a container without a system JDK, plus a `Lint` job running `npm run lint`.
 - macOS defaults `minimumJavaVersion` to 11 (no Java 8 there); keep that branch intact.
