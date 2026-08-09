@@ -2,11 +2,11 @@
 "use strict";
 const { JavaCaller } = require('../lib/index');
 const os = require("os");
-const which = require("which");
 const path = require('path');
 
 const {
     beforeEachTestCase,
+    findInPath,
     checkStatus,
     checkStdOutIncludes,
     checkStdErrIncludes
@@ -169,10 +169,8 @@ describe("Call with classes", () => {
     });
 
     it("should call JavaCallerTester.class in JavaCallerTester.jar (override java)", async () => {
-        let javaPath;
-        try {
-            javaPath = which.sync("java");
-        } catch {
+        const javaPath = findInPath("java");
+        if (!javaPath) {
             console.log("Java not found: ignore test method");
         }
         if (javaPath) {

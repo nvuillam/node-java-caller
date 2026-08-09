@@ -58,7 +58,7 @@ Do not edit anything when returning this block.
 
 - Edit sources: `lib/*.js` (and keep `lib/index.d.ts` in sync when you change an option, a signature, or an export); tests in `test/`; config files at the repo root (`package.json`, `.eslintrc.js`, `.mega-linter.yml`, etc.); workflows in `.github/workflows/`.
 - Keep the existing code style (ESLint `eslint:recommended` + Prettier). Use the existing `debug("java-caller")` logging pattern.
-- Run local validation that needs no network where possible: `npm run lint:fix`, then `npm run test` (set `DEBUG=java-caller` to mirror CI; the mocha timeout is 5 min because real JRE installs run). Coverage runs under `npm run test:coverage`.
+- Run local validation that needs no network where possible: `npm run lint:fix`, then `npm run test` (set `NODE_DEBUG=java-caller` to mirror CI; the mocha timeout is 5 min because real JRE installs run). Coverage runs under `npm run test:coverage`.
 - Do NOT introduce defensive hacks (skip-on-fail, retries, `|| true`, weakened assertions, broad eslint ignores) to force green - fix the root cause.
 - **npm only**, never `yarn` (it would desync `package-lock.json`).
 

@@ -9,8 +9,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Commands
 
 ```shell
-npm run test                  # Run all mocha tests (timeout 300000ms; CI sets DEBUG=java-caller,njre)
-npm run test:debug            # Tests with DEBUG=java-caller enabled
+npm run test                  # Run all mocha tests (timeout 300000ms; CI sets NODE_DEBUG=java-caller)
+npm run test:debug            # Tests with NODE_DEBUG=java-caller enabled
 npm run lint:fix              # eslint --fix on **/*.js, then prettier on lib (tab-width 4, print-width 150)
 
 # Run a single test by name (mocha grep on the it()/describe() title):
@@ -50,10 +50,12 @@ Three modules in `lib/`, re-exported from `index.js`:
 - **Java-version resolution is cached on `globalThis.JAVA_CALLER_VERSIONS_CACHE`** to avoid repeated lookups across instances in one process. Tests reset this in `test/helpers/init.js`; if you add caching state, reset it there too.
 - **Platform branching** lives in `getPlatformBinPath()` (darwin = `Contents/Home/bin`) and several `os.platform() === "win32"` checks. Windows also handles arg quoting (`windowsVerbatimArguments`), `javaw` for windowless, and `windowsHide`. Any new behavior must be validated on win32/darwin/linux.
 - **`classPath`** accepts a string (split on `:`, converted to the OS delimiter) or a string array; resolved against `rootPath` unless `useAbsoluteClassPaths` is set.
+- **Runtime dependencies are deliberately minimal** (`njre` + `semver` only): prefer `node:` built-ins over adding a package.
+- **Debug traces use `util.debuglog`**, activated with `NODE_DEBUG=java-caller` (not `DEBUG=`, which was the pre-v6 `debug` package contract). `debuglog` reads `NODE_DEBUG` only from the environment the process was launched with, so tests and helpers cannot turn traces on at runtime — `npm run test:debug` sets it on the command line.
 
 ## Testing notes
 
 - Tests are mocha + `node:assert`, with shared helpers in `test/helpers/common.js` (`checkStatus`, `checkStdOutIncludes`, etc.) and per-run init in `test/helpers/init.js` (loaded via the `mocha.require` config in `package.json`).
 - `test/java-install.test.js` exercises the real `njre` download/install path, which is why the mocha timeout is 5 minutes.
-- CI (`.github/workflows/test.yml`) runs the matrix Node 18/20/24 × Java 8/11/17/21/25 × ubuntu/macos/windows, plus a no-Java job (`Test - No Java`) that runs the suite in a container without a system JDK.
+- CI (`.github/workflows/test.yml`) runs the matrix Node 18/20/24 × Java 8/11/17/21/25 × ubuntu/macos/windows, plus a no-Java job (`Test - No Java`) that runs the suite in a container without a system JDK, plus a `Lint` job running `npm run lint`.
 - macOS defaults `minimumJavaVersion` to 11 (no Java 8 there); keep that branch intact.

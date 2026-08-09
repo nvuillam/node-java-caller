@@ -12,9 +12,9 @@
   "scripts": {
     "install-local-cli": "npm install && npm link --force",
     "run:source": "node lib/index.js -a list --of arguments",
-    "run:source:verbose": "env DEBUG=java-caller node lib/index.js -a list --of arguments",
+    "run:source:verbose": "env NODE_DEBUG=java-caller node lib/index.js -a list --of arguments",
     "run:cli": "java-caller-example-cli -a list --of arguments",
-    "run:verbose": "env DEBUG=java-caller java-caller-example-cli -a list --of arguments"
+    "run:verbose": "env NODE_DEBUG=java-caller java-caller-example-cli -a list --of arguments"
   },
   "keywords": [
     "java-caller",

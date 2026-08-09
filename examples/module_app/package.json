@@ -12,9 +12,9 @@
   "scripts": {
     "install-local-cli": "npm install && npm link --force",
     "run:source": "node lib/index.js",
-    "run:source:verbose": "env DEBUG=java-caller node lib/index.js",
+    "run:source:verbose": "env NODE_DEBUG=java-caller node lib/index.js",
     "run:cli": "java-caller-example-module",
-    "run:cli:verbose": "env DEBUG=java-caller java-caller-example-module",
+    "run:cli:verbose": "env NODE_DEBUG=java-caller java-caller-example-module",
     "test": "echo \"I strongly encourage you to implement test cases and code coverage, with mocha and nyc for example :)\""
   },
   "keywords": [
