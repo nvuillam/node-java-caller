@@ -31,13 +31,14 @@ jobs:
 
       # Mega-Linter
       - name: Mega-Linter
-        uses: oxsecurity/megalinter/flavors/javascript@ef3e84b8b836d76db562d0f3ed7da61e8fd538bc # v9.6.0
+        uses: oxsecurity/megalinter/flavors/javascript@15e5b45552097e318c93de385779ce3b1084052c # v10.0.0
         env:
           # All available variables are described in documentation
           # https://github.com/oxsecurity/megalinter#configuration
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISABLE_LINTERS: JAVASCRIPT_STANDARD,SPELL_PROSELINT,REPOSITORY_KICS
+          # REPOSITORY_KICS was removed in MegaLinter v10
+          DISABLE_LINTERS: JAVASCRIPT_STANDARD,SPELL_PROSELINT
           JAVA_FILTER_REGEX_EXCLUDE: (JavaCallerTester)
 
       # Upload Mega-Linter artifacts. They will be available on Github action page "Artifacts" section

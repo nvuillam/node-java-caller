@@ -1,3 +1,6 @@
+# Flavor & version used by mega-linter-runner and the MegaLinter agent skills
+MEGALINTER_FLAVOR: javascript
+MEGALINTER_VERSION: v10
 DISABLE_LINTERS:
   - TYPESCRIPT_STANDARD
   - TYPESCRIPT_PRETTIER
