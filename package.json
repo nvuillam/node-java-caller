@@ -45,7 +45,7 @@
     "@types/node": "^25.2.0",
     "eslint": "^10.0.0",
     "globals": "^17.9.0",
-    "mocha": "^11.0.0",
+    "mocha": "^12.0.0",
     "prettier": "^3.1.0",
     "typescript": "^7.0.0"
   },
