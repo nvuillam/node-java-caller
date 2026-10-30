@@ -2,6 +2,8 @@
 
 ## Unreleased
 
+- Fix a java executable whose path contains a space (such as the JRE java-caller installs under a Windows home folder like `C:\Users\First Last`) being run through a shell: on Windows, `cmd.exe` refused any command line over 8191 characters ("The command line is too long") and opened a console window for a detached process. Java is now always spawned directly, so an executable that cannot start reports status `666` with `Java spawn error` on every platform, as for any other path, instead of the shell's exit code.
+
 ## [6.0.0] 2026-08-09
 
 - **Breaking**: Debug traces are now activated with `NODE_DEBUG=java-caller` instead of `DEBUG=java-caller`. The `debug` package has been replaced by Node's built-in `util.debuglog`, which only reads `NODE_DEBUG` from the environment the process is launched with (setting `process.env.NODE_DEBUG` at runtime no longer enables traces). The output format changes accordingly, from `java-caller <message> +1ms` to `JAVA-CALLER <pid>: <message>`.

@@ -1,6 +1,7 @@
 #! /usr/bin/env node
 "use strict";
 const { JavaCaller } = require('../lib/index');
+const fs = require("fs");
 const os = require("os");
 const path = require('path');
 
@@ -217,7 +218,8 @@ describe("Call with classes", () => {
         });
         const { status, stdout, stderr } = await java.run();
 
-        checkStatus(os.platform() === "win32" ? 1 : 127, status, stdout, stderr);
+        checkStatus(666, status, stdout, stderr);
+        checkStdErrIncludes("Java spawn error", stdout, stderr);
     });
 
     it("should use JavaCallerCli", async function () {
@@ -256,6 +258,34 @@ describe("Call with classes", () => {
 
         checkStatus(0, status, stdout, stderr);
         checkStdOutIncludes(`JavaCallerTester is called !`, stdout, stderr);
+    });
+
+    it("should call a java executable whose path contains a space, with arguments longer than cmd.exe accepts", async () => {
+        const javaPath = findInPath("java");
+        if (!javaPath) {
+            console.log("Java not found: ignore test method");
+            return;
+        }
+        // Link the real Java home under a directory whose name holds a space, so the JVM still finds its libraries
+        const javaHome = path.dirname(path.dirname(fs.realpathSync(javaPath)));
+        const spacedDir = fs.mkdtempSync(path.join(os.tmpdir(), "java caller "));
+        const linkedHome = path.join(spacedDir, "java home");
+        fs.symlinkSync(javaHome, linkedHome, "junction");
+        try {
+            const java = new JavaCaller({
+                classPath: "test/java/dist",
+                mainClass: "com.nvuillam.javacaller.JavaCallerTester",
+                javaExecutable: path.join(linkedHome, "bin", os.platform() === "win32" ? "java.exe" : "java"),
+            });
+            // cmd.exe refuses a command line over 8191 characters
+            const longArgument = "x".repeat(9000);
+            const { status, stdout, stderr } = await java.run([longArgument]);
+
+            checkStatus(0, status, stdout, stderr);
+            checkStdOutIncludes(longArgument, stdout, stderr);
+        } finally {
+            fs.rmSync(spacedDir, { recursive: true, force: true });
+        }
     });
 
     it("should terminate once timeout is reached", async () => {
