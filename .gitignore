@@ -8,3 +8,4 @@ coverage/
 megalinter-reports/
 
 .sfdx/
+.sf/
