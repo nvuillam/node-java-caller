@@ -2,6 +2,10 @@
 
 ## Unreleased
 
+- Upgrade `njre` to v3.0.1
+- Upgrade dependencies, and override `glob`, `minimatch` and `serialize-javascript` dev dependencies to fix known vulnerabilities
+- Replace the vendored MegaLinter agent skills with the `megalinter` Claude Code plugin
+
 ## [6.0.0] 2026-08-09
 
 - **Breaking**: Debug traces are now activated with `NODE_DEBUG=java-caller` instead of `DEBUG=java-caller`. The `debug` package has been replaced by Node's built-in `util.debuglog`, which only reads `NODE_DEBUG` from the environment the process is launched with (setting `process.env.NODE_DEBUG` at runtime no longer enables traces). The output format changes accordingly, from `java-caller <message> +1ms` to `JAVA-CALLER <pid>: <message>`.
