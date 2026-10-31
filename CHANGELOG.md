@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Fix a java executable whose path contains a space (such as the JRE java-caller installs under a Windows home folder like `C:\Users\First Last`) being run through a shell: on Windows, `cmd.exe` refused any command line over 8191 characters ("The command line is too long") and opened a console window for a detached process. Java is now always spawned directly, so an executable that cannot start reports status `666` with `Java spawn error` on every platform, as for any other path, instead of the shell's exit code.
 - Upgrade `njre` to v3.0.1
 - Upgrade dependencies, and override `glob`, `minimatch` and `serialize-javascript` dev dependencies to fix known vulnerabilities
 - Replace the vendored MegaLinter agent skills with the `megalinter` Claude Code plugin
