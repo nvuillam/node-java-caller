@@ -41,7 +41,7 @@ jobs:
         include:
           - node_version: "26"
             java_version: "17"
-            java_distrib: adopt
+            java_distrib: zulu
             os: ubuntu-latest
         exclude:
           # excludes node 8 on macOS
@@ -60,7 +60,7 @@ jobs:
         with:
           node-version: ${{ matrix.node_version }}
       - name: Install Java
-        uses: actions/setup-java@b6effb05e454b25005698d916606bdc6ffcbf961 # v5.7.0
+        uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
         with:
           distribution: ${{ matrix.java_distrib }}
           java-version: ${{ matrix.java_version }}
